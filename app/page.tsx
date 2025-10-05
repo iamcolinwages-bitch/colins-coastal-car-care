@@ -240,7 +240,7 @@ export default function Home() {
             <div>
               <div className="flex items-center space-x-3 mb-4">
                 <Image
-                  src="/logo.svg"
+                  src="/logo.png"
                   alt="C4 Logo"
                   width={60}
                   height={60}

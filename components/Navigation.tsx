@@ -27,7 +27,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3" onClick={() => setIsOpen(false)}>
             <Image
-              src="/logo.svg"
+              src="/logo.png"
               alt="C4 Logo"
               width={50}
               height={50}
