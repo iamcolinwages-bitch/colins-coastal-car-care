@@ -14,7 +14,7 @@ export default function AdminLoginPage() {
     e.preventDefault();
 
     // Email and password check
-    if (email === 'iamColinwages@gmail.com' && password === 'feelingblue2001') {
+    if (email === 'iamcolinwages@gmail.com' && password === 'feelingblue2001') {
       // Store in session/cookie
       sessionStorage.setItem('admin_auth', 'true');
       router.push('/admin/dashboard');
