@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Navigation from '@/components/Navigation';
 import { Calendar, Clock, MapPin, DollarSign, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 
-export default function SchedulePage() {
+function ScheduleContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const quoteId = searchParams.get('quote');
@@ -465,5 +465,17 @@ export default function SchedulePage() {
         </div>
       </div>
     </>
+  );
+}
+
+export default function SchedulePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-primary animate-spin" />
+      </div>
+    }>
+      <ScheduleContent />
+    </Suspense>
   );
 }
