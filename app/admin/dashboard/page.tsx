@@ -126,9 +126,9 @@ export default function AdminDashboard() {
             <Image
               src="/logo.png"
               alt="C4 Logo"
-              width={50}
+              width={200}
               height={50}
-              className="w-12 h-12"
+              className="h-10 w-auto"
             />
             <div>
               <div className="text-white font-bold">Admin Portal</div>

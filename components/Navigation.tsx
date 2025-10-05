@@ -23,15 +23,15 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3" onClick={() => setIsOpen(false)}>
             <Image
               src="/logo.png"
               alt="C4 Logo"
-              width={50}
+              width={200}
               height={50}
-              className="w-12 h-12 md:w-14 md:h-14"
+              className="h-10 w-auto md:h-12"
               priority
             />
             <div className="hidden sm:block">
@@ -88,7 +88,7 @@ export default function Navigation() {
           />
 
           {/* Menu */}
-          <div className="fixed inset-x-0 top-16 bottom-0 bg-gray-900 border-t border-gray-800 z-50 md:hidden overflow-y-auto">
+          <div className="fixed inset-x-0 top-20 bottom-0 bg-gray-900 border-t border-gray-800 z-50 md:hidden overflow-y-auto">
             <div className="px-4 pt-4 pb-6 space-y-2">
               <Link
                 href="/services"

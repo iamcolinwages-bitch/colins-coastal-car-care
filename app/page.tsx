@@ -75,7 +75,7 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20">
+      <section className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-24">
         {/* Background with gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMxRTkwRkYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE2YzAtMy4zMTQgMi42ODYtNiA2LTZzNi0yLjY4NiA2LTZjMC0zLjMxNC0yLjY4Ni02LTYtNnMtNiAyLjY4Ni02IDZ2Nnoiic/+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
@@ -242,9 +242,9 @@ export default function Home() {
                 <Image
                   src="/logo.png"
                   alt="C4 Logo"
-                  width={60}
-                  height={60}
-                  className="w-14 h-14"
+                  width={200}
+                  height={50}
+                  className="h-12 w-auto"
                 />
                 <div>
                   <div className="text-white font-bold">Colin's Coastal</div>
