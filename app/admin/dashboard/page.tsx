@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   LayoutDashboard,
   Calendar,
@@ -122,10 +123,13 @@ export default function AdminDashboard() {
       <div className="bg-gray-900 border-b border-gray-800 sticky top-0 z-40">
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
-            <div className="text-2xl font-bold">
-              <span className="text-primary">C</span>
-              <span className="text-white">4</span>
-            </div>
+            <Image
+              src="/logo.png"
+              alt="C4 Logo"
+              width={50}
+              height={50}
+              className="w-12 h-12"
+            />
             <div>
               <div className="text-white font-bold">Admin Portal</div>
               <div className="text-gray-400 text-sm">Colin's Coastal Car Care</div>

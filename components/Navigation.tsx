@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 
@@ -24,11 +25,14 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2" onClick={() => setIsOpen(false)}>
-            <div className="text-2xl md:text-3xl font-bold">
-              <span className="text-primary">C</span>
-              <span className="text-white">4</span>
-            </div>
+          <Link href="/" className="flex items-center space-x-3" onClick={() => setIsOpen(false)}>
+            <Image
+              src="/logo.png"
+              alt="C4 Logo"
+              width={50}
+              height={50}
+              className="w-12 h-12 md:w-14 md:h-14"
+            />
             <div className="hidden sm:block">
               <div className="text-white font-bold text-base md:text-lg">Colin's Coastal</div>
               <div className="text-gray-400 text-xs md:text-sm -mt-1">Car Care</div>

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Navigation from '@/components/Navigation';
 import { MapPin, Star, Clock, Shield, Sparkles, Car } from 'lucide-react';
 import type { Metadata } from 'next';
@@ -135,7 +136,7 @@ export default function Home() {
 
       {/* Service Areas Section - Features Style Menu */}
       <section className="py-12 md:py-20 bg-gray-900">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 md:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 md:mb-4">
               Serving Southwest Florida
@@ -145,7 +146,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl mx-auto">
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {serviceAreas.map((area) => (
               <div
                 key={area.name}
@@ -160,6 +162,7 @@ export default function Home() {
                 </div>
               </div>
             ))}
+            </div>
           </div>
 
           <div className="mt-12 text-center">
@@ -177,7 +180,7 @@ export default function Home() {
 
       {/* Features Section */}
       <section className="py-20 bg-black">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
               Why Choose C4?
@@ -187,7 +190,8 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-6xl mx-auto">
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature) => (
               <div key={feature.title} className="text-center">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
@@ -197,6 +201,7 @@ export default function Home() {
                 <p className="text-gray-400">{feature.description}</p>
               </div>
             ))}
+            </div>
           </div>
         </div>
       </section>
@@ -229,14 +234,18 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-gray-900 border-t border-gray-800 py-12">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 w-full max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="text-3xl font-bold">
-                  <span className="text-primary">C</span>
-                  <span className="text-white">4</span>
-                </div>
+              <div className="flex items-center space-x-3 mb-4">
+                <Image
+                  src="/logo.png"
+                  alt="C4 Logo"
+                  width={60}
+                  height={60}
+                  className="w-14 h-14"
+                />
                 <div>
                   <div className="text-white font-bold">Colin's Coastal</div>
                   <div className="text-gray-400 text-sm">Car Care</div>
@@ -264,6 +273,7 @@ export default function Home() {
                 <li>Email: iamColinwages@gmail.com</li>
                 <li>Hours: Mon-Sat, 7 AM - 7:30 PM</li>
               </ul>
+            </div>
             </div>
           </div>
 
