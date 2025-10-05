@@ -74,51 +74,53 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20">
         {/* Background with gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMxRTkwRkYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE2YzAtMy4zMTQgMi42ODYtNiA2LTZzNi0yLjY4NiA2LTZjMC0zLjMxNC0yLjY4Ni02LTYtNnMtNiAyLjY4Ni02IDZ2Nnoiic/+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-          <div className="mb-8 inline-flex items-center space-x-2 bg-primary/10 border border-primary/30 px-6 py-3 rounded-full">
-            <Sparkles className="w-5 h-5 text-primary" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 text-center">
+          <div className="mb-6 md:mb-8 inline-flex items-center space-x-2 bg-primary/10 border border-primary/30 px-4 py-2 md:px-6 md:py-3 rounded-full text-sm md:text-base">
+            <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-primary" />
             <span className="text-gray-300">Southwest Florida's Premier Mobile Detailing</span>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight">
             <span className="text-white">Pristine Cars,</span>
             <br />
             <span className="text-primary">Delivered to You</span>
           </h1>
 
-          <p className="text-xl sm:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 md:mb-12 max-w-3xl mx-auto px-4">
             Professional mobile detailing that brings showroom shine to your driveway.
             Serving Naples, Marco Island, Bonita Springs, and Estero.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 px-4">
             <Link
               href="/booking"
-              className="w-full sm:w-auto bg-primary hover:bg-primary-dark text-white px-10 py-5 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg shadow-primary/30"
+              className="w-full sm:w-auto bg-primary hover:bg-primary-dark text-white px-8 py-3 md:px-10 md:py-5 rounded-lg text-base md:text-lg font-semibold transition-all transform hover:scale-105 shadow-lg shadow-primary/30"
             >
               Book Now
             </Link>
             <Link
               href="/quote"
-              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/20 text-white px-10 py-5 rounded-lg text-lg font-semibold transition-all backdrop-blur-sm"
+              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 border border-white/20 text-white px-8 py-3 md:px-10 md:py-5 rounded-lg text-base md:text-lg font-semibold transition-all backdrop-blur-sm"
             >
               Get a Free Quote
             </Link>
           </div>
 
-          <div className="mt-12 flex items-center justify-center gap-2 text-gray-400">
-            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+          <div className="mt-8 md:mt-12 flex flex-wrap items-center justify-center gap-1 md:gap-2 text-sm md:text-base text-gray-400">
+            <div className="flex gap-1">
+              <Star className="w-4 h-4 md:w-5 md:h-5 text-yellow-400 fill-yellow-400" />
+              <Star className="w-4 h-4 md:w-5 md:h-5 text-yellow-400 fill-yellow-400" />
+              <Star className="w-4 h-4 md:w-5 md:h-5 text-yellow-400 fill-yellow-400" />
+              <Star className="w-4 h-4 md:w-5 md:h-5 text-yellow-400 fill-yellow-400" />
+              <Star className="w-4 h-4 md:w-5 md:h-5 text-yellow-400 fill-yellow-400" />
+            </div>
             <span className="ml-2">5.0 from our satisfied customers</span>
           </div>
         </div>
@@ -132,13 +134,13 @@ export default function Home() {
       </section>
 
       {/* Service Areas Section - Features Style Menu */}
-      <section className="py-20 bg-gray-900">
+      <section className="py-12 md:py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 md:mb-4">
               Serving Southwest Florida
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto px-4">
               Premium mobile detailing services across Collier and Lee counties
             </p>
           </div>
