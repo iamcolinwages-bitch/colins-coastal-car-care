@@ -191,15 +191,20 @@ function ScheduleContent() {
     return (
       <>
         <Navigation />
-        <div className="min-h-screen pt-20 pb-16 bg-black">
-          <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div className="bg-gray-900 border border-red-800 rounded-xl p-8 text-center">
-              <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
-              <h2 className="text-2xl font-bold text-white mb-2">Unable to Load Quote</h2>
-              <p className="text-gray-400 mb-6">{error}</p>
+        <div className="min-h-screen pt-20 pb-16 mesh-bg flex items-center justify-center">
+          <div className="max-w-2xl mx-auto px-6 sm:px-8 lg:px-12 py-32">
+            <div className="modern-card p-10 text-center">
+              <div className="relative mb-8">
+                <div className="absolute inset-0 bg-red-500/30 rounded-full blur-xl opacity-60"></div>
+                <div className="relative w-20 h-20 glass-strong rounded-2xl flex items-center justify-center mx-auto">
+                  <AlertCircle className="w-10 h-10 text-red-500" />
+                </div>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Unable to Load Quote</h2>
+              <p className="text-lg text-gray-400 mb-10 leading-relaxed">{error}</p>
               <a
                 href="/quote"
-                className="inline-block bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+                className="inline-block bg-gradient-to-r from-primary to-red-700 hover:from-red-600 hover:to-red-800 text-white px-12 py-5 rounded-xl font-bold text-lg transition-all hover:scale-105 hover:shadow-xl hover:shadow-primary/30"
               >
                 Request New Quote
               </a>
@@ -214,37 +219,40 @@ function ScheduleContent() {
     return (
       <>
         <Navigation />
-        <div className="min-h-screen pt-20 pb-16 bg-black">
-          <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div className="bg-gray-900 border border-green-800 rounded-xl p-8 text-center">
-              <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-12 h-12 text-green-500" />
+        <div className="min-h-screen pt-20 pb-16 mesh-bg flex items-center justify-center">
+          <div className="max-w-2xl mx-auto px-6 sm:px-8 lg:px-12 py-32">
+            <div className="modern-card p-10 text-center">
+              <div className="relative mb-8">
+                <div className="absolute inset-0 bg-green-500/30 rounded-full blur-xl opacity-60"></div>
+                <div className="relative w-24 h-24 glass-strong rounded-2xl flex items-center justify-center mx-auto">
+                  <CheckCircle className="w-14 h-14 text-green-500" />
+                </div>
               </div>
-              <h2 className="text-3xl font-bold text-white mb-4">Booking Confirmed!</h2>
-              <p className="text-xl text-gray-300 mb-2">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Booking Confirmed!</h2>
+              <p className="text-2xl text-white mb-3">
                 Thank you, {quote.first_name}!
               </p>
-              <p className="text-gray-400 mb-8">
+              <p className="text-lg text-gray-400 mb-10 leading-relaxed">
                 We've received your booking request. You'll receive a confirmation email shortly.
               </p>
-              <div className="bg-black border border-gray-800 rounded-lg p-6 mb-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+              <div className="glass-strong border border-white/10 rounded-2xl p-8 mb-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
                   <div>
-                    <div className="text-sm text-gray-500 mb-1">Date & Time</div>
-                    <div className="text-white font-semibold">
+                    <div className="text-sm text-gray-400 mb-2">Date & Time</div>
+                    <div className="text-white font-bold text-lg">
                       {new Date(bookingData.date).toLocaleDateString('en-US', {
                         weekday: 'long',
                         month: 'long',
                         day: 'numeric'
                       })}
                     </div>
-                    <div className="text-gray-300">
+                    <div className="text-gray-300 text-base mt-1">
                       {timeSlots.find(t => t.value === bookingData.time)?.label}
                     </div>
                   </div>
                   <div>
-                    <div className="text-sm text-gray-500 mb-1">Total</div>
-                    <div className="text-2xl font-bold text-primary">
+                    <div className="text-sm text-gray-400 mb-2">Total</div>
+                    <div className="text-4xl font-bold text-primary">
                       ${quote.approved_price}
                     </div>
                   </div>
@@ -262,206 +270,220 @@ function ScheduleContent() {
     <>
       <Navigation />
 
-      <div className="min-h-screen pt-20 pb-16 bg-black">
-        {/* Header */}
-        <section className="bg-gradient-to-r from-primary to-primary-dark py-16">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full mb-4">
+      <div className="min-h-screen pt-20 pb-16">
+        {/* Header - Modern Design */}
+        <section className="relative py-32 md:py-40 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-red-700 to-red-900"></div>
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20"></div>
+
+          <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+            <div className="inline-flex items-center gap-3 glass-strong px-6 py-3 rounded-full mb-8 border border-white/20">
               <Calendar className="w-5 h-5 text-white" />
-              <span className="text-white font-semibold">Schedule Appointment</span>
+              <span className="text-base font-medium text-white">Schedule Appointment</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-2xl tracking-tight">
               Choose Your Date & Time
             </h1>
-            <p className="text-xl text-white/90">
+            <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed">
               Select when you'd like your detailing service
             </p>
           </div>
         </section>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {/* Quote Summary */}
-          <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 mb-8">
-            <h2 className="text-xl font-bold text-white mb-6">Your Quote Summary</h2>
+        <div className="relative mesh-bg py-32 md:py-40">
+          <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
+            {/* Quote Summary */}
+            <div className="modern-card p-8 mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">Your Quote Summary</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <DollarSign className="w-5 h-5 text-primary" />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div className="flex items-start gap-4">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-primary/30 rounded-xl blur-lg opacity-60"></div>
+                    <div className="relative w-14 h-14 glass-strong rounded-xl flex items-center justify-center">
+                      <DollarSign className="w-7 h-7 text-primary" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-sm text-gray-400 mb-2">Total Price</div>
+                    <div className="text-3xl font-bold text-primary">${quote.approved_price}</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="text-sm text-gray-400 mb-1">Total Price</div>
-                  <div className="text-2xl font-bold text-primary">${quote.approved_price}</div>
+
+                <div className="flex items-start gap-4">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-secondary/30 rounded-xl blur-lg opacity-60"></div>
+                    <div className="relative w-14 h-14 glass-strong rounded-xl flex items-center justify-center">
+                      <MapPin className="w-7 h-7 text-secondary" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-sm text-gray-400 mb-2">Location</div>
+                    <div className="text-white font-semibold text-lg">{quote.city}</div>
+                    <div className="text-sm text-gray-500">{quote.address}</div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-green-500/30 rounded-xl blur-lg opacity-60"></div>
+                    <div className="relative w-14 h-14 glass-strong rounded-xl flex items-center justify-center">
+                      <CheckCircle className="w-7 h-7 text-green-500" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-sm text-gray-400 mb-2">Vehicle</div>
+                    <div className="text-white font-semibold text-lg">
+                      {quote.vehicle_year} {quote.vehicle_make} {quote.vehicle_model}
+                    </div>
+                    <div className="text-sm text-gray-500 capitalize">
+                      {quote.vehicle_type?.replace('_', ' ')}
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-secondary" />
-                </div>
-                <div>
-                  <div className="text-sm text-gray-400 mb-1">Location</div>
-                  <div className="text-white font-semibold">{quote.city}</div>
-                  <div className="text-sm text-gray-500">{quote.address}</div>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 bg-green-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
-                </div>
-                <div>
-                  <div className="text-sm text-gray-400 mb-1">Vehicle</div>
-                  <div className="text-white font-semibold">
-                    {quote.vehicle_year} {quote.vehicle_make} {quote.vehicle_model}
-                  </div>
-                  <div className="text-sm text-gray-500 capitalize">
-                    {quote.vehicle_type?.replace('_', ' ')}
-                  </div>
+              <div className="pt-8 border-t border-white/10">
+                <div className="text-base text-gray-400 mb-4 font-semibold">Selected Services</div>
+                <div className="flex flex-wrap gap-3">
+                  {quote.selected_packages?.map((pkg: string, idx: number) => (
+                    <span
+                      key={idx}
+                      className="px-4 py-2 glass-strong border border-primary/30 text-primary rounded-xl text-sm font-medium"
+                    >
+                      {pkg}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
 
-            <div className="pt-6 border-t border-gray-800">
-              <div className="text-sm text-gray-400 mb-3">Selected Services</div>
-              <div className="flex flex-wrap gap-2">
-                {quote.selected_packages?.map((pkg: string, idx: number) => (
-                  <span
-                    key={idx}
-                    className="px-3 py-1 bg-primary/10 border border-primary/30 text-primary rounded-lg text-sm"
-                  >
-                    {pkg}
-                  </span>
-                ))}
+            {/* Booking Form */}
+            <form onSubmit={handleSubmit} className="modern-card p-10">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">Schedule Your Appointment</h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                {/* Date Selection */}
+                <div>
+                  <label className="block text-white font-semibold mb-3 text-lg">
+                    Select Date <span className="text-primary">*</span>
+                  </label>
+                  <div className="relative">
+                    <Calendar className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
+                    <input
+                      type="date"
+                      required
+                      min={minDate}
+                      max={maxDateStr}
+                      value={bookingData.date}
+                      onChange={(e) => {
+                        setBookingData({ ...bookingData, date: e.target.value });
+                        setErrors({ ...errors, date: '' });
+                      }}
+                      className={`w-full min-h-[50px] glass border ${
+                        errors.date ? 'border-red-500' : 'border-gray-700'
+                      } text-white pl-14 pr-5 py-4 rounded-xl focus:outline-none focus:border-primary text-base`}
+                    />
+                  </div>
+                  {errors.date && (
+                    <p className="text-red-500 text-sm mt-3 flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4" />
+                      {errors.date}
+                    </p>
+                  )}
+                  <p className="text-sm text-gray-400 mt-3">
+                    Book up to 30 days in advance. Closed Sundays.
+                  </p>
+                </div>
+
+                {/* Time Selection */}
+                <div>
+                  <label className="block text-white font-semibold mb-3 text-lg">
+                    Select Time <span className="text-primary">*</span>
+                  </label>
+                  <div className="relative">
+                    <Clock className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
+                    <select
+                      required
+                      value={bookingData.time}
+                      onChange={(e) => {
+                        setBookingData({ ...bookingData, time: e.target.value });
+                        setErrors({ ...errors, time: '' });
+                      }}
+                      className={`w-full min-h-[50px] glass border ${
+                        errors.time ? 'border-red-500' : 'border-gray-700'
+                      } text-white pl-14 pr-5 py-4 rounded-xl focus:outline-none focus:border-primary text-base`}
+                    >
+                      <option value="">Choose a time</option>
+                      {timeSlots.map((slot) => (
+                        <option key={slot.value} value={slot.value}>
+                          {slot.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  {errors.time && (
+                    <p className="text-red-500 text-sm mt-3 flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4" />
+                      {errors.time}
+                    </p>
+                  )}
+                  <p className="text-sm text-gray-400 mt-3">
+                    Mon-Sat: 7:00 AM - 7:00 PM
+                  </p>
+                </div>
               </div>
-            </div>
+
+              {/* Additional Notes */}
+              <div className="mb-8">
+                <label className="block text-white font-semibold mb-3 text-lg">
+                  Additional Notes (Optional)
+                </label>
+                <textarea
+                  value={bookingData.notes}
+                  onChange={(e) => setBookingData({ ...bookingData, notes: e.target.value })}
+                  rows={5}
+                  placeholder="Any special instructions or requests?"
+                  className="w-full glass border border-gray-700 text-white px-5 py-4 rounded-xl focus:outline-none focus:border-primary resize-none text-base leading-relaxed"
+                />
+              </div>
+
+              {error && (
+                <div className="mb-8 glass-strong border border-red-500/30 rounded-xl p-5 flex items-start gap-3">
+                  <AlertCircle className="w-6 h-6 text-red-400 flex-shrink-0 mt-0.5" />
+                  <p className="text-red-300 text-base">{error}</p>
+                </div>
+              )}
+
+              {/* Submit Button */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  type="button"
+                  onClick={() => router.back()}
+                  className="flex-1 min-h-[56px] glass border border-gray-700 hover:border-gray-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105"
+                >
+                  Go Back
+                </button>
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="flex-1 min-h-[56px] bg-gradient-to-r from-primary to-red-700 hover:from-red-600 hover:to-red-800 disabled:opacity-50 disabled:cursor-not-allowed text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 hover:shadow-xl hover:shadow-primary/30 flex items-center justify-center gap-2"
+                >
+                  {submitting ? (
+                    <>
+                      <Loader2 className="w-6 h-6 animate-spin" />
+                      Confirming Booking...
+                    </>
+                  ) : (
+                    <>
+                      <CheckCircle className="w-6 h-6" />
+                      Confirm Booking
+                    </>
+                  )}
+                </button>
+              </div>
+            </form>
           </div>
-
-          {/* Booking Form */}
-          <form onSubmit={handleSubmit} className="bg-gray-900 border border-gray-800 rounded-xl p-8">
-            <h2 className="text-2xl font-bold text-white mb-6">Schedule Your Appointment</h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              {/* Date Selection */}
-              <div>
-                <label className="block text-white font-semibold mb-2">
-                  Select Date <span className="text-primary">*</span>
-                </label>
-                <div className="relative">
-                  <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
-                  <input
-                    type="date"
-                    required
-                    min={minDate}
-                    max={maxDateStr}
-                    value={bookingData.date}
-                    onChange={(e) => {
-                      setBookingData({ ...bookingData, date: e.target.value });
-                      setErrors({ ...errors, date: '' });
-                    }}
-                    className={`w-full bg-black border ${
-                      errors.date ? 'border-red-500' : 'border-gray-800'
-                    } text-white pl-12 pr-4 py-3 rounded-lg focus:outline-none focus:border-primary`}
-                  />
-                </div>
-                {errors.date && (
-                  <p className="text-red-500 text-sm mt-2 flex items-center gap-1">
-                    <AlertCircle className="w-4 h-4" />
-                    {errors.date}
-                  </p>
-                )}
-                <p className="text-sm text-gray-500 mt-2">
-                  Book up to 30 days in advance. Closed Sundays.
-                </p>
-              </div>
-
-              {/* Time Selection */}
-              <div>
-                <label className="block text-white font-semibold mb-2">
-                  Select Time <span className="text-primary">*</span>
-                </label>
-                <div className="relative">
-                  <Clock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none" />
-                  <select
-                    required
-                    value={bookingData.time}
-                    onChange={(e) => {
-                      setBookingData({ ...bookingData, time: e.target.value });
-                      setErrors({ ...errors, time: '' });
-                    }}
-                    className={`w-full bg-black border ${
-                      errors.time ? 'border-red-500' : 'border-gray-800'
-                    } text-white pl-12 pr-4 py-3 rounded-lg focus:outline-none focus:border-primary`}
-                  >
-                    <option value="">Choose a time</option>
-                    {timeSlots.map((slot) => (
-                      <option key={slot.value} value={slot.value}>
-                        {slot.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                {errors.time && (
-                  <p className="text-red-500 text-sm mt-2 flex items-center gap-1">
-                    <AlertCircle className="w-4 h-4" />
-                    {errors.time}
-                  </p>
-                )}
-                <p className="text-sm text-gray-500 mt-2">
-                  Mon-Sat: 7:00 AM - 7:00 PM
-                </p>
-              </div>
-            </div>
-
-            {/* Additional Notes */}
-            <div className="mb-8">
-              <label className="block text-white font-semibold mb-2">
-                Additional Notes (Optional)
-              </label>
-              <textarea
-                value={bookingData.notes}
-                onChange={(e) => setBookingData({ ...bookingData, notes: e.target.value })}
-                rows={4}
-                placeholder="Any special instructions or requests?"
-                className="w-full bg-black border border-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary resize-none"
-              />
-            </div>
-
-            {error && (
-              <div className="mb-6 bg-red-900/20 border border-red-800 rounded-lg p-4 flex items-start gap-3">
-                <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-                <p className="text-red-400">{error}</p>
-              </div>
-            )}
-
-            {/* Submit Button */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                type="button"
-                onClick={() => router.back()}
-                className="flex-1 bg-gray-800 hover:bg-gray-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors"
-              >
-                Go Back
-              </button>
-              <button
-                type="submit"
-                disabled={submitting}
-                className="flex-1 bg-gradient-to-r from-primary to-primary-dark hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed text-white px-8 py-4 rounded-lg font-semibold transition-opacity flex items-center justify-center gap-2"
-              >
-                {submitting ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    Confirming Booking...
-                  </>
-                ) : (
-                  <>
-                    <CheckCircle className="w-5 h-5" />
-                    Confirm Booking
-                  </>
-                )}
-              </button>
-            </div>
-          </form>
         </div>
       </div>
     </>
