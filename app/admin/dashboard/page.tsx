@@ -125,14 +125,13 @@ export default function AdminDashboard() {
           <div className="flex items-center gap-3">
             <Image
               src="/logo.png"
-              alt="C4 Logo"
+              alt="Colin's Coastal Car Care"
               width={200}
               height={50}
-              className="h-10 w-auto"
+              className="h-12 w-auto"
             />
             <div>
               <div className="text-white font-bold">Admin Portal</div>
-              <div className="text-gray-400 text-sm">Colin's Coastal Car Care</div>
             </div>
           </div>
           <button

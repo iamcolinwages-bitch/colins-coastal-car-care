@@ -238,18 +238,14 @@ export default function Home() {
           <div className="flex justify-center">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
-              <div className="flex items-center space-x-3 mb-4">
+              <div className="mb-4">
                 <Image
                   src="/logo.png"
-                  alt="C4 Logo"
+                  alt="Colin's Coastal Car Care"
                   width={200}
                   height={50}
-                  className="h-12 w-auto"
+                  className="h-14 w-auto"
                 />
-                <div>
-                  <div className="text-white font-bold">Colin's Coastal</div>
-                  <div className="text-gray-400 text-sm">Car Care</div>
-                </div>
               </div>
               <p className="text-gray-400">
                 Southwest Florida's premier mobile car detailing service.
@@ -279,6 +275,9 @@ export default function Home() {
 
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
             <p>&copy; 2025 Colin's Coastal Car Care. All rights reserved.</p>
+            <Link href="/admin" className="text-gray-600 hover:text-gray-500 text-xs mt-2 inline-block">
+              Admin
+            </Link>
           </div>
         </div>
       </footer>

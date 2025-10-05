@@ -25,19 +25,15 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3" onClick={() => setIsOpen(false)}>
+          <Link href="/" className="flex items-center" onClick={() => setIsOpen(false)}>
             <Image
               src="/logo.png"
-              alt="C4 Logo"
+              alt="Colin's Coastal Car Care"
               width={200}
               height={50}
-              className="h-10 w-auto md:h-12"
+              className="h-12 w-auto md:h-16"
               priority
             />
-            <div className="hidden sm:block">
-              <div className="text-white font-bold text-base md:text-lg">Colin's Coastal</div>
-              <div className="text-gray-400 text-xs md:text-sm -mt-1">Car Care</div>
-            </div>
           </Link>
 
           {/* Desktop Navigation */}
