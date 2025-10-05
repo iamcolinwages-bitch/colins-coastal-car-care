@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  /* Colin's Coastal Car Care Theme - Black & Red with Coastal Blue */
+  /* Colin's Coastal Car Care Theme - Black & Deep Red with Coastal Blue */
   --background: #000000;
   --foreground: #ffffff;
-  --primary: #B91C1C; /* Deep Red - darker, less pink */
-  --primary-dark: #7F1D1D;
-  --secondary: #1E90FF; /* Coastal Blue */
+  --primary: #B91C1C; /* Deep Red - darker, professional look */
+  --primary-dark: #7F1D1D; /* Darker red for hovers */
+  --secondary: #1E90FF; /* Coastal Blue accent */
   --secondary-dark: #1a75cc;
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
