@@ -152,51 +152,62 @@ export default function ReviewsPage() {
       <Navigation />
 
       <div className="min-h-screen pt-20 pb-16">
-        {/* Header */}
-        <section className="bg-gradient-to-r from-primary to-primary-dark py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Customer Reviews
-            </h1>
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="flex gap-1">{renderStars(5)}</div>
-              <span className="text-3xl font-bold text-white">{averageRating}</span>
-              <span className="text-white/80">({reviews.length} reviews)</span>
+        {/* Header - Modern Design */}
+        <section className="relative py-32 md:py-40 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-red-700 to-red-900"></div>
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20"></div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+            <div className="inline-flex items-center gap-3 glass-strong px-6 py-3 rounded-full mb-8 border border-white/20">
+              <Star className="w-5 h-5 text-white" />
+              <span className="text-base font-medium text-white">Customer Reviews</span>
             </div>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-2xl tracking-tight">
+              What Our Customers Say
+            </h1>
+            <div className="flex items-center justify-center gap-4 mb-8">
+              <div className="flex gap-1">{renderStars(5)}</div>
+              <span className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg">{averageRating}</span>
+              <span className="text-xl text-white/90">({reviews.length} reviews)</span>
+            </div>
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light leading-relaxed">
               See what our customers are saying about Colin's Coastal Car Care
             </p>
           </div>
         </section>
 
         {/* Reviews Grid */}
-        <section className="py-16 bg-black">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative py-32 md:py-40 mesh-bg">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             {loading ? (
-              <div className="text-center py-20">
-                <div className="text-gray-400">Loading reviews...</div>
+              <div className="text-center py-32">
+                <Loader2 className="w-12 h-12 text-primary animate-spin mx-auto mb-6" />
+                <div className="text-xl text-gray-400">Loading reviews...</div>
               </div>
             ) : reviews.length === 0 ? (
-              <div className="text-center py-20">
-                <div className="text-gray-400">No reviews yet. Be the first to leave one!</div>
+              <div className="text-center py-32">
+                <div className="w-20 h-20 glass-strong rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Star className="w-10 h-10 text-primary" />
+                </div>
+                <div className="text-xl text-gray-400">No reviews yet. Be the first to leave one!</div>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
                 {reviews.map((review) => (
                   <div
                     key={review.id}
-                    className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-primary transition-colors"
+                    className="group modern-card p-8 hover:scale-105 transition-all"
                   >
-                    <div className="flex items-center gap-2 mb-4">
+                    <div className="flex items-center gap-2 mb-6">
                       {renderStars(review.rating)}
                     </div>
-                    <p className="text-gray-300 mb-4 line-clamp-4">{review.review_text}</p>
-                    <div className="border-t border-gray-800 pt-4">
-                      <div className="font-semibold text-white">{review.customer_name}</div>
+                    <p className="text-gray-300 mb-6 line-clamp-4 leading-relaxed text-base">{review.review_text}</p>
+                    <div className="border-t border-white/10 pt-6">
+                      <div className="font-semibold text-white text-lg">{review.customer_name}</div>
                       {review.service_type && (
-                        <div className="text-sm text-gray-400">{review.service_type}</div>
+                        <div className="text-sm text-gray-400 mt-1">{review.service_type}</div>
                       )}
-                      <div className="text-xs text-gray-500 mt-1">
+                      <div className="text-xs text-gray-500 mt-2">
                         {new Date(review.created_at).toLocaleDateString()}
                       </div>
                     </div>
@@ -208,24 +219,29 @@ export default function ReviewsPage() {
         </section>
 
         {/* Submit Review Section */}
-        <section className="py-16 bg-gray-900">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+        <section className="relative py-32 md:py-40 bg-gradient-to-b from-black via-gray-950 to-black">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40"></div>
+
+          <div className="relative z-10 max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
                 Leave a Review
               </h2>
-              <p className="text-gray-400">
+              <p className="text-xl text-gray-400 font-light">
                 Share your experience with Colin's Coastal Car Care
               </p>
             </div>
 
             {submitted ? (
-              <div className="bg-black border border-primary rounded-xl p-8 text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Star className="w-8 h-8 text-primary" />
+              <div className="modern-card p-10 text-center">
+                <div className="relative mb-8">
+                  <div className="absolute inset-0 bg-primary/30 rounded-full blur-xl opacity-60"></div>
+                  <div className="relative w-20 h-20 glass-strong rounded-2xl flex items-center justify-center mx-auto">
+                    <Star className="w-10 h-10 text-primary" />
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Thank You!</h3>
-                <p className="text-gray-400 mb-6">
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Thank You!</h3>
+                <p className="text-lg text-gray-400 mb-8 leading-relaxed">
                   Your review has been submitted and is pending approval. It will appear once
                   approved by our team.
                 </p>
@@ -234,7 +250,7 @@ export default function ReviewsPage() {
                     setSubmitted(false);
                     setShowForm(false);
                   }}
-                  className="text-primary hover:text-primary-dark font-semibold"
+                  className="text-primary hover:text-red-600 font-semibold text-lg transition-colors min-h-[48px] px-6"
                 >
                   Submit Another Review
                 </button>
@@ -243,15 +259,15 @@ export default function ReviewsPage() {
               <div className="text-center">
                 <button
                   onClick={() => setShowForm(true)}
-                  className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
+                  className="bg-gradient-to-r from-primary to-red-700 hover:from-red-600 hover:to-red-800 text-white px-12 py-5 rounded-xl font-bold text-lg transition-all hover:scale-105 hover:shadow-xl hover:shadow-primary/30"
                 >
                   Write a Review
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-black border border-gray-800 rounded-xl p-8">
-                <div className="mb-6">
-                  <label className="block text-white font-semibold mb-2">
+              <form onSubmit={handleSubmit} className="modern-card p-10">
+                <div className="mb-8">
+                  <label className="block text-white font-semibold mb-3 text-lg">
                     Your Name <span className="text-primary">*</span>
                   </label>
                   <input
@@ -261,21 +277,21 @@ export default function ReviewsPage() {
                       setFormData({ ...formData, name: e.target.value });
                       if (errors.name) setErrors({ ...errors, name: '' });
                     }}
-                    className={`w-full bg-gray-900 border ${
-                      errors.name ? 'border-red-500' : 'border-gray-800'
-                    } text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary transition-colors`}
+                    className={`w-full min-h-[50px] glass border ${
+                      errors.name ? 'border-red-500' : 'border-gray-700'
+                    } text-white px-5 py-4 rounded-xl focus:outline-none focus:border-primary transition-colors text-base`}
                     placeholder="Your full name"
                   />
                   {errors.name && (
-                    <p className="text-red-500 text-sm mt-2 flex items-center gap-1">
+                    <p className="text-red-500 text-sm mt-3 flex items-center gap-2">
                       <AlertCircle className="w-4 h-4" />
                       {errors.name}
                     </p>
                   )}
                 </div>
 
-                <div className="mb-6">
-                  <label className="block text-white font-semibold mb-2">
+                <div className="mb-8">
+                  <label className="block text-white font-semibold mb-3 text-lg">
                     Email (optional, won't be displayed)
                   </label>
                   <input
@@ -285,21 +301,21 @@ export default function ReviewsPage() {
                       setFormData({ ...formData, email: e.target.value });
                       if (errors.email) setErrors({ ...errors, email: '' });
                     }}
-                    className={`w-full bg-gray-900 border ${
-                      errors.email ? 'border-red-500' : 'border-gray-800'
-                    } text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary transition-colors`}
+                    className={`w-full min-h-[50px] glass border ${
+                      errors.email ? 'border-red-500' : 'border-gray-700'
+                    } text-white px-5 py-4 rounded-xl focus:outline-none focus:border-primary transition-colors text-base`}
                     placeholder="your.email@example.com (optional)"
                   />
                   {errors.email && (
-                    <p className="text-red-500 text-sm mt-2 flex items-center gap-1">
+                    <p className="text-red-500 text-sm mt-3 flex items-center gap-2">
                       <AlertCircle className="w-4 h-4" />
                       {errors.email}
                     </p>
                   )}
                 </div>
 
-                <div className="mb-6">
-                  <label className="block text-white font-semibold mb-2">
+                <div className="mb-8">
+                  <label className="block text-white font-semibold mb-3 text-lg">
                     Service Type (optional)
                   </label>
                   <input
@@ -307,24 +323,24 @@ export default function ReviewsPage() {
                     value={formData.serviceType}
                     onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
                     placeholder="e.g. Premium Interior Detail"
-                    className="w-full bg-gray-900 border border-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary"
+                    className="w-full min-h-[50px] glass border border-gray-700 text-white px-5 py-4 rounded-xl focus:outline-none focus:border-primary text-base"
                   />
                 </div>
 
-                <div className="mb-6">
-                  <label className="block text-white font-semibold mb-3">
+                <div className="mb-8">
+                  <label className="block text-white font-semibold mb-4 text-lg">
                     Rating <span className="text-primary">*</span>
                   </label>
-                  <div className="flex gap-2">
+                  <div className="flex gap-3">
                     {[1, 2, 3, 4, 5].map((num) => (
                       <button
                         key={num}
                         type="button"
                         onClick={() => setFormData({ ...formData, rating: num })}
-                        className="focus:outline-none hover:scale-110 transition-transform"
+                        className="min-w-[48px] min-h-[48px] flex items-center justify-center focus:outline-none hover:scale-110 transition-transform"
                       >
                         <Star
-                          className={`w-8 h-8 ${
+                          className={`w-10 h-10 ${
                             num <= formData.rating
                               ? 'text-yellow-400 fill-yellow-400'
                               : 'text-gray-600'
@@ -333,7 +349,7 @@ export default function ReviewsPage() {
                       </button>
                     ))}
                   </div>
-                  <p className="text-sm text-gray-500 mt-2">
+                  <p className="text-base text-gray-400 mt-3">
                     {formData.rating === 5 && "Excellent!"}
                     {formData.rating === 4 && "Very Good"}
                     {formData.rating === 3 && "Good"}
@@ -342,8 +358,8 @@ export default function ReviewsPage() {
                   </p>
                 </div>
 
-                <div className="mb-6">
-                  <label className="block text-white font-semibold mb-2">
+                <div className="mb-8">
+                  <label className="block text-white font-semibold mb-3 text-lg">
                     Your Review <span className="text-primary">*</span>
                   </label>
                   <textarea
@@ -352,42 +368,42 @@ export default function ReviewsPage() {
                       setFormData({ ...formData, reviewText: e.target.value });
                       if (errors.reviewText) setErrors({ ...errors, reviewText: '' });
                     }}
-                    rows={5}
-                    className={`w-full bg-gray-900 border ${
-                      errors.reviewText ? 'border-red-500' : 'border-gray-800'
-                    } text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary resize-none transition-colors`}
+                    rows={6}
+                    className={`w-full glass border ${
+                      errors.reviewText ? 'border-red-500' : 'border-gray-700'
+                    } text-white px-5 py-4 rounded-xl focus:outline-none focus:border-primary resize-none transition-colors text-base leading-relaxed`}
                     placeholder="Tell us about your experience... (minimum 20 characters)"
                   />
                   {errors.reviewText && (
-                    <p className="text-red-500 text-sm mt-2 flex items-center gap-1">
+                    <p className="text-red-500 text-sm mt-3 flex items-center gap-2">
                       <AlertCircle className="w-4 h-4" />
                       {errors.reviewText}
                     </p>
                   )}
-                  <p className="text-sm text-gray-500 mt-2">
+                  <p className="text-sm text-gray-400 mt-3">
                     {formData.reviewText.length} characters
                   </p>
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     type="button"
                     onClick={() => {
                       setShowForm(false);
                       setErrors({ name: '', email: '', reviewText: '' });
                     }}
-                    className="flex-1 bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                    className="flex-1 min-h-[56px] glass border border-gray-700 hover:border-gray-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="flex-1 bg-primary hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+                    className="flex-1 min-h-[56px] bg-gradient-to-r from-primary to-red-700 hover:from-red-600 hover:to-red-800 disabled:opacity-50 disabled:cursor-not-allowed text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 hover:shadow-xl hover:shadow-primary/30 flex items-center justify-center gap-2"
                   >
                     {submitting ? (
                       <>
-                        <Loader2 className="w-5 h-5 animate-spin" />
+                        <Loader2 className="w-6 h-6 animate-spin" />
                         Submitting...
                       </>
                     ) : (
