@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
-import { Star } from 'lucide-react';
+import { Star, AlertCircle, Loader2 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 
 interface Review {
@@ -29,6 +29,12 @@ export default function ReviewsPage() {
     serviceType: '',
   });
 
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    reviewText: '',
+  });
+
   useEffect(() => {
     async function fetchReviews() {
       try {
@@ -48,8 +54,49 @@ export default function ReviewsPage() {
     fetchReviews();
   }, []);
 
+  const validateEmail = (email: string) => {
+    if (!email) return true; // Email is optional
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
+  const validateForm = () => {
+    const newErrors = {
+      name: '',
+      email: '',
+      reviewText: '',
+    };
+    let isValid = true;
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+      isValid = false;
+    }
+
+    if (formData.email && !validateEmail(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+      isValid = false;
+    }
+
+    if (!formData.reviewText.trim()) {
+      newErrors.reviewText = 'Review text is required';
+      isValid = false;
+    } else if (formData.reviewText.trim().length < 20) {
+      newErrors.reviewText = 'Review must be at least 20 characters';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     setSubmitting(true);
 
     try {
@@ -71,6 +118,11 @@ export default function ReviewsPage() {
         rating: 5,
         reviewText: '',
         serviceType: '',
+      });
+      setErrors({
+        name: '',
+        email: '',
+        reviewText: '',
       });
     } catch (error) {
       console.error('Error submitting review:', error);
@@ -204,11 +256,22 @@ export default function ReviewsPage() {
                   </label>
                   <input
                     type="text"
-                    required
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-gray-900 border border-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary"
+                    onChange={(e) => {
+                      setFormData({ ...formData, name: e.target.value });
+                      if (errors.name) setErrors({ ...errors, name: '' });
+                    }}
+                    className={`w-full bg-gray-900 border ${
+                      errors.name ? 'border-red-500' : 'border-gray-800'
+                    } text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary transition-colors`}
+                    placeholder="Your full name"
                   />
+                  {errors.name && (
+                    <p className="text-red-500 text-sm mt-2 flex items-center gap-1">
+                      <AlertCircle className="w-4 h-4" />
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
 
                 <div className="mb-6">
@@ -218,9 +281,21 @@ export default function ReviewsPage() {
                   <input
                     type="email"
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-gray-900 border border-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary"
+                    onChange={(e) => {
+                      setFormData({ ...formData, email: e.target.value });
+                      if (errors.email) setErrors({ ...errors, email: '' });
+                    }}
+                    className={`w-full bg-gray-900 border ${
+                      errors.email ? 'border-red-500' : 'border-gray-800'
+                    } text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary transition-colors`}
+                    placeholder="your.email@example.com (optional)"
                   />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-2 flex items-center gap-1">
+                      <AlertCircle className="w-4 h-4" />
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
 
                 <div className="mb-6">
@@ -246,7 +321,7 @@ export default function ReviewsPage() {
                         key={num}
                         type="button"
                         onClick={() => setFormData({ ...formData, rating: num })}
-                        className="focus:outline-none"
+                        className="focus:outline-none hover:scale-110 transition-transform"
                       >
                         <Star
                           className={`w-8 h-8 ${
@@ -258,6 +333,13 @@ export default function ReviewsPage() {
                       </button>
                     ))}
                   </div>
+                  <p className="text-sm text-gray-500 mt-2">
+                    {formData.rating === 5 && "Excellent!"}
+                    {formData.rating === 4 && "Very Good"}
+                    {formData.rating === 3 && "Good"}
+                    {formData.rating === 2 && "Fair"}
+                    {formData.rating === 1 && "Poor"}
+                  </p>
                 </div>
 
                 <div className="mb-6">
@@ -265,19 +347,35 @@ export default function ReviewsPage() {
                     Your Review <span className="text-primary">*</span>
                   </label>
                   <textarea
-                    required
                     value={formData.reviewText}
-                    onChange={(e) => setFormData({ ...formData, reviewText: e.target.value })}
+                    onChange={(e) => {
+                      setFormData({ ...formData, reviewText: e.target.value });
+                      if (errors.reviewText) setErrors({ ...errors, reviewText: '' });
+                    }}
                     rows={5}
-                    className="w-full bg-gray-900 border border-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary resize-none"
-                    placeholder="Tell us about your experience..."
+                    className={`w-full bg-gray-900 border ${
+                      errors.reviewText ? 'border-red-500' : 'border-gray-800'
+                    } text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary resize-none transition-colors`}
+                    placeholder="Tell us about your experience... (minimum 20 characters)"
                   />
+                  {errors.reviewText && (
+                    <p className="text-red-500 text-sm mt-2 flex items-center gap-1">
+                      <AlertCircle className="w-4 h-4" />
+                      {errors.reviewText}
+                    </p>
+                  )}
+                  <p className="text-sm text-gray-500 mt-2">
+                    {formData.reviewText.length} characters
+                  </p>
                 </div>
 
                 <div className="flex gap-4">
                   <button
                     type="button"
-                    onClick={() => setShowForm(false)}
+                    onClick={() => {
+                      setShowForm(false);
+                      setErrors({ name: '', email: '', reviewText: '' });
+                    }}
                     className="flex-1 bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
                   >
                     Cancel
@@ -285,9 +383,16 @@ export default function ReviewsPage() {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="flex-1 bg-primary hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                    className="flex-1 bg-primary hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
                   >
-                    {submitting ? 'Submitting...' : 'Submit Review'}
+                    {submitting ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      'Submit Review'
+                    )}
                   </button>
                 </div>
               </form>
