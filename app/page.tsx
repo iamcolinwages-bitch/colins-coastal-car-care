@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Navigation from '@/components/Navigation';
-import { MapPin, Star, Clock, Shield, Sparkles, Car, ArrowRight, Zap } from 'lucide-react';
+import { MapPin, Star, Clock, Shield, Sparkles, Car, ArrowRight, Zap, Phone } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
