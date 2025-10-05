@@ -156,45 +156,50 @@ export default function QuotePage() {
       <Navigation />
 
       <div className="min-h-screen pt-20 pb-16 bg-black">
-        {/* Header */}
-        <section className="bg-gradient-to-r from-primary to-primary-dark py-16">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full mb-4">
+        {/* Header - Modern Design */}
+        <section className="relative py-32 md:py-40 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-red-700 to-red-900"></div>
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20"></div>
+
+          <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+            <div className="inline-flex items-center gap-3 glass-strong px-6 py-3 rounded-full mb-8 border border-white/20">
               <Calculator className="w-5 h-5 text-white" />
-              <span className="text-white font-semibold">Instant Quote</span>
+              <span className="text-base font-medium text-white">Instant Quote</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-2xl tracking-tight">
               Get Your Instant Quote
             </h1>
-            <p className="text-xl text-white/90">
+            <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed">
               Build your perfect package and book immediately
             </p>
           </div>
         </section>
 
         {/* Progress Steps */}
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex items-center justify-center gap-2">
+        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
+          <div className="flex items-center justify-center gap-2 md:gap-3">
             {[1, 2, 3, 4].map((num) => (
               <div key={num} className="flex items-center">
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
-                    step >= num ? 'bg-primary text-white' : 'bg-gray-800 text-gray-500'
+                  className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center font-bold text-lg md:text-xl transition-all duration-300 ${
+                    step >= num
+                      ? 'bg-gradient-to-br from-primary to-red-700 text-white shadow-lg shadow-primary/30'
+                      : 'bg-gray-800 text-gray-500'
                   }`}
                 >
                   {num}
                 </div>
                 {num < 4 && (
-                  <div className={`w-12 h-1 mx-2 ${step > num ? 'bg-primary' : 'bg-gray-800'}`} />
+                  <div className={`w-8 md:w-16 h-1 mx-1 md:mx-2 rounded-full transition-all duration-300 ${step > num ? 'bg-primary' : 'bg-gray-800'}`} />
                 )}
               </div>
             ))}
           </div>
-          <div className="flex justify-center gap-8 mt-4 text-sm text-gray-400">
-            <span className={step === 1 ? 'text-primary' : ''}>Services</span>
-            <span className={step === 2 ? 'text-primary' : ''}>Vehicle</span>
-            <span className={step === 3 ? 'text-primary' : ''}>Condition</span>
-            <span className={step === 4 ? 'text-primary' : ''}>Details</span>
+          <div className="flex justify-center gap-4 md:gap-12 mt-6 text-sm md:text-base text-gray-400 font-medium">
+            <span className={`transition-colors ${step === 1 ? 'text-primary font-bold' : ''}`}>Services</span>
+            <span className={`transition-colors ${step === 2 ? 'text-primary font-bold' : ''}`}>Vehicle</span>
+            <span className={`transition-colors ${step === 3 ? 'text-primary font-bold' : ''}`}>Condition</span>
+            <span className={`transition-colors ${step === 4 ? 'text-primary font-bold' : ''}`}>Details</span>
           </div>
         </div>
 
@@ -203,19 +208,19 @@ export default function QuotePage() {
             <div className="text-gray-400">Loading...</div>
           </div>
         ) : (
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 pb-16">
             {/* Step 1: Select Services */}
             {step === 1 && (
-              <div className="bg-gray-900 border border-gray-800 rounded-xl p-8">
-                <h2 className="text-2xl font-bold text-white mb-6">Select Your Services</h2>
+              <div className="modern-card p-8 md:p-10">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">Select Your Services</h2>
 
-                <div className="mb-8">
-                  <h3 className="text-lg font-semibold text-white mb-4">Packages</h3>
-                  <div className="space-y-3">
+                <div className="mb-10">
+                  <h3 className="text-xl font-bold text-white mb-6">Packages</h3>
+                  <div className="space-y-4">
                     {packages.map((pkg) => (
                       <label
                         key={pkg.id}
-                        className="flex items-center gap-4 bg-black border border-gray-800 hover:border-primary rounded-lg p-4 cursor-pointer transition-colors"
+                        className="flex items-center gap-4 md:gap-6 glass hover:bg-white/10 hover:border-primary/50 rounded-xl p-5 md:p-6 cursor-pointer transition-all min-h-[60px]"
                       >
                         <input
                           type="checkbox"
@@ -227,11 +232,11 @@ export default function QuotePage() {
                               setSelectedPackages(selectedPackages.filter((id) => id !== pkg.id));
                             }
                           }}
-                          className="w-5 h-5 text-primary"
+                          className="w-6 h-6 text-primary rounded-lg flex-shrink-0"
                         />
-                        <div className="flex-1">
-                          <div className="text-white font-semibold">{pkg.name}</div>
-                          <div className="text-sm text-gray-400">
+                        <div className="flex-1 min-w-0">
+                          <div className="text-white font-bold text-base md:text-lg mb-1">{pkg.name}</div>
+                          <div className="text-sm md:text-base text-gray-400">
                             Sedan: ${pkg.sedan_price} | SUV/Truck: ${pkg.suv_truck_price}
                           </div>
                         </div>
@@ -240,13 +245,13 @@ export default function QuotePage() {
                   </div>
                 </div>
 
-                <div className="mb-8">
-                  <h3 className="text-lg font-semibold text-white mb-4">Add-ons</h3>
-                  <div className="space-y-3">
+                <div className="mb-10">
+                  <h3 className="text-xl font-bold text-white mb-6">Add-ons</h3>
+                  <div className="space-y-4">
                     {addOns.map((addOn) => (
                       <label
                         key={addOn.id}
-                        className="flex items-center gap-4 bg-black border border-gray-800 hover:border-primary rounded-lg p-4 cursor-pointer transition-colors"
+                        className="flex items-center gap-4 md:gap-6 glass hover:bg-white/10 hover:border-primary/50 rounded-xl p-5 md:p-6 cursor-pointer transition-all min-h-[60px]"
                       >
                         <input
                           type="checkbox"
@@ -258,22 +263,22 @@ export default function QuotePage() {
                               setSelectedAddOns(selectedAddOns.filter((id) => id !== addOn.id));
                             }
                           }}
-                          className="w-5 h-5 text-primary"
+                          className="w-6 h-6 text-primary rounded-lg flex-shrink-0"
                         />
-                        <div className="flex-1">
-                          <div className="text-white font-semibold">{addOn.name}</div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-white font-bold text-base md:text-lg">{addOn.name}</div>
                         </div>
-                        <div className="text-primary font-semibold">${addOn.price}</div>
+                        <div className="text-primary font-bold text-lg md:text-xl flex-shrink-0">${addOn.price}</div>
                       </label>
                     ))}
                   </div>
                 </div>
 
-                <div className="flex justify-end pt-6 border-t border-gray-800">
+                <div className="flex justify-end pt-8 border-t border-white/10">
                   <button
                     onClick={() => setStep(2)}
                     disabled={selectedPackages.length === 0}
-                    className="bg-primary hover:bg-primary-dark disabled:bg-gray-700 disabled:cursor-not-allowed text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+                    className="bg-gradient-to-r from-primary to-red-700 hover:from-red-600 hover:to-red-800 disabled:from-gray-700 disabled:to-gray-800 disabled:cursor-not-allowed text-white px-10 py-4 rounded-xl font-bold transition-all hover:scale-105 text-lg shadow-lg hover:shadow-xl"
                   >
                     Next: Vehicle Type
                   </button>
@@ -283,44 +288,44 @@ export default function QuotePage() {
 
             {/* Step 2: Vehicle Type */}
             {step === 2 && (
-              <div className="bg-gray-900 border border-gray-800 rounded-xl p-8">
-                <h2 className="text-2xl font-bold text-white mb-6">Vehicle Type</h2>
+              <div className="modern-card p-8 md:p-10">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">Vehicle Type</h2>
 
-                <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
                   <button
                     onClick={() => setVehicleType('sedan')}
-                    className={`p-6 rounded-lg border-2 transition-all ${
+                    className={`p-8 md:p-10 rounded-2xl border-2 transition-all min-h-[120px] ${
                       vehicleType === 'sedan'
-                        ? 'border-primary bg-primary/10'
-                        : 'border-gray-800 hover:border-gray-700'
+                        ? 'border-primary bg-primary/10 shadow-lg shadow-primary/20'
+                        : 'border-gray-700 hover:border-gray-600 glass'
                     }`}
                   >
-                    <div className="text-white font-semibold mb-1">Sedan</div>
-                    <div className="text-sm text-gray-400">Cars, Coupes, Sedans</div>
+                    <div className="text-white font-bold text-xl md:text-2xl mb-2">Sedan</div>
+                    <div className="text-base text-gray-400">Cars, Coupes, Sedans</div>
                   </button>
                   <button
                     onClick={() => setVehicleType('suv_truck')}
-                    className={`p-6 rounded-lg border-2 transition-all ${
+                    className={`p-8 md:p-10 rounded-2xl border-2 transition-all min-h-[120px] ${
                       vehicleType === 'suv_truck'
-                        ? 'border-primary bg-primary/10'
-                        : 'border-gray-800 hover:border-gray-700'
+                        ? 'border-primary bg-primary/10 shadow-lg shadow-primary/20'
+                        : 'border-gray-700 hover:border-gray-600 glass'
                     }`}
                   >
-                    <div className="text-white font-semibold mb-1">SUV/Truck</div>
-                    <div className="text-sm text-gray-400">SUVs, Trucks, Vans</div>
+                    <div className="text-white font-bold text-xl md:text-2xl mb-2">SUV/Truck</div>
+                    <div className="text-base text-gray-400">SUVs, Trucks, Vans</div>
                   </button>
                 </div>
 
-                <div className="flex justify-between items-center pt-6 border-t border-gray-800">
+                <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-white/10">
                   <button
                     onClick={() => setStep(1)}
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-400 hover:text-white transition-colors font-semibold text-lg order-2 sm:order-1"
                   >
                     ← Back
                   </button>
                   <button
                     onClick={() => setStep(3)}
-                    className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+                    className="w-full sm:w-auto bg-gradient-to-r from-primary to-red-700 hover:from-red-600 hover:to-red-800 text-white px-10 py-4 rounded-xl font-bold transition-all hover:scale-105 text-lg shadow-lg hover:shadow-xl order-1 sm:order-2"
                   >
                     Next: Vehicle Condition
                   </button>
@@ -330,49 +335,49 @@ export default function QuotePage() {
 
             {/* Step 3: Vehicle Condition */}
             {step === 3 && (
-              <div className="bg-gray-900 border border-gray-800 rounded-xl p-8">
-                <h2 className="text-2xl font-bold text-white mb-2">Vehicle Condition</h2>
-                <p className="text-gray-400 mb-6">Select the current condition of your vehicle</p>
+              <div className="modern-card p-8 md:p-10">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">Vehicle Condition</h2>
+                <p className="text-gray-400 mb-8 text-lg">Select the current condition of your vehicle</p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
                   {conditionOptions.map((option) => (
                     <button
                       key={option.value}
                       onClick={() => setVehicleCondition(option.value)}
-                      className={`p-6 rounded-lg border-2 text-left transition-all ${
+                      className={`p-6 md:p-8 rounded-2xl border-2 text-left transition-all min-h-[120px] ${
                         vehicleCondition === option.value
-                          ? 'border-primary bg-primary/10'
-                          : 'border-gray-800 hover:border-gray-700'
+                          ? 'border-primary bg-primary/10 shadow-lg shadow-primary/20'
+                          : 'border-gray-700 hover:border-gray-600 glass'
                       }`}
                     >
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="text-white font-semibold text-lg">{option.label}</div>
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="text-white font-bold text-xl md:text-2xl">{option.label}</div>
                         {option.multiplier > 1 && (
-                          <span className="text-primary text-sm">+{((option.multiplier - 1) * 100).toFixed(0)}%</span>
+                          <span className="text-primary text-base font-bold">+{((option.multiplier - 1) * 100).toFixed(0)}%</span>
                         )}
                       </div>
-                      <div className="text-sm text-gray-400">{option.description}</div>
+                      <div className="text-sm md:text-base text-gray-400 leading-relaxed">{option.description}</div>
                     </button>
                   ))}
                 </div>
 
-                <div className="bg-black border border-primary/30 rounded-lg p-6 mb-6">
-                  <div className="flex items-center justify-between">
-                    <div className="text-gray-400">Estimated Total</div>
-                    <div className="text-3xl font-bold text-primary">${calculateTotal()}</div>
+                <div className="glass-strong border border-primary/30 rounded-2xl p-8 mb-10 shadow-xl shadow-primary/10">
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div className="text-gray-300 text-lg font-medium">Estimated Total</div>
+                    <div className="text-4xl md:text-5xl font-bold gradient-text-primary">${calculateTotal()}</div>
                   </div>
                 </div>
 
-                <div className="flex justify-between items-center pt-6 border-t border-gray-800">
+                <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-white/10">
                   <button
                     onClick={() => setStep(2)}
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-400 hover:text-white transition-colors font-semibold text-lg order-2 sm:order-1"
                   >
                     ← Back
                   </button>
                   <button
                     onClick={() => setStep(4)}
-                    className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+                    className="w-full sm:w-auto bg-gradient-to-r from-primary to-red-700 hover:from-red-600 hover:to-red-800 text-white px-10 py-4 rounded-xl font-bold transition-all hover:scale-105 text-lg shadow-lg hover:shadow-xl order-1 sm:order-2"
                   >
                     Next: Your Info
                   </button>
@@ -382,12 +387,12 @@ export default function QuotePage() {
 
             {/* Step 4: Customer Info */}
             {step === 4 && (
-              <div className="bg-gray-900 border border-gray-800 rounded-xl p-8">
-                <h2 className="text-2xl font-bold text-white mb-6">Your Information</h2>
+              <div className="modern-card p-8 md:p-10">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">Your Information</h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <label className="block text-white font-semibold mb-2">
+                    <label className="block text-white font-bold mb-3 text-base">
                       First Name <span className="text-primary">*</span>
                     </label>
                     <input
@@ -395,11 +400,12 @@ export default function QuotePage() {
                       required
                       value={customerInfo.firstName}
                       onChange={(e) => setCustomerInfo({ ...customerInfo, firstName: e.target.value })}
-                      className="w-full bg-black border border-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary"
+                      className="w-full glass border border-white/10 text-white px-5 py-4 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-base min-h-[50px]"
+                      placeholder="John"
                     />
                   </div>
                   <div>
-                    <label className="block text-white font-semibold mb-2">
+                    <label className="block text-white font-bold mb-3 text-base">
                       Last Name <span className="text-primary">*</span>
                     </label>
                     <input
@@ -407,14 +413,15 @@ export default function QuotePage() {
                       required
                       value={customerInfo.lastName}
                       onChange={(e) => setCustomerInfo({ ...customerInfo, lastName: e.target.value })}
-                      className="w-full bg-black border border-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary"
+                      className="w-full glass border border-white/10 text-white px-5 py-4 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-base min-h-[50px]"
+                      placeholder="Doe"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <label className="block text-white font-semibold mb-2">
+                    <label className="block text-white font-bold mb-3 text-base">
                       Email <span className="text-primary">*</span>
                     </label>
                     <input
@@ -422,11 +429,12 @@ export default function QuotePage() {
                       required
                       value={customerInfo.email}
                       onChange={(e) => setCustomerInfo({ ...customerInfo, email: e.target.value })}
-                      className="w-full bg-black border border-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary"
+                      className="w-full glass border border-white/10 text-white px-5 py-4 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-base min-h-[50px]"
+                      placeholder="john@example.com"
                     />
                   </div>
                   <div>
-                    <label className="block text-white font-semibold mb-2">
+                    <label className="block text-white font-bold mb-3 text-base">
                       Phone <span className="text-primary">*</span>
                     </label>
                     <input
@@ -434,14 +442,15 @@ export default function QuotePage() {
                       required
                       value={customerInfo.phone}
                       onChange={(e) => setCustomerInfo({ ...customerInfo, phone: e.target.value })}
-                      className="w-full bg-black border border-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary"
+                      className="w-full glass border border-white/10 text-white px-5 py-4 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-base min-h-[50px]"
+                      placeholder="(123) 456-7890"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <label className="block text-white font-semibold mb-2">
+                    <label className="block text-white font-bold mb-3 text-base">
                       Service Address <span className="text-primary">*</span>
                     </label>
                     <input
@@ -449,18 +458,19 @@ export default function QuotePage() {
                       required
                       value={customerInfo.address}
                       onChange={(e) => setCustomerInfo({ ...customerInfo, address: e.target.value })}
-                      className="w-full bg-black border border-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary"
+                      className="w-full glass border border-white/10 text-white px-5 py-4 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-base min-h-[50px]"
+                      placeholder="123 Main St"
                     />
                   </div>
                   <div>
-                    <label className="block text-white font-semibold mb-2">
+                    <label className="block text-white font-bold mb-3 text-base">
                       City <span className="text-primary">*</span>
                     </label>
                     <select
                       required
                       value={customerInfo.city}
                       onChange={(e) => setCustomerInfo({ ...customerInfo, city: e.target.value })}
-                      className="w-full bg-black border border-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary"
+                      className="w-full glass border border-white/10 text-white px-5 py-4 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-base min-h-[50px]"
                     >
                       <option value="">Select City</option>
                       <option value="Naples">Naples</option>
@@ -471,53 +481,53 @@ export default function QuotePage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
                   <div>
-                    <label className="block text-white font-semibold mb-2">Make</label>
+                    <label className="block text-white font-bold mb-3 text-base">Vehicle Make</label>
                     <input
                       type="text"
                       value={customerInfo.vehicleMake}
                       onChange={(e) => setCustomerInfo({ ...customerInfo, vehicleMake: e.target.value })}
                       placeholder="e.g. Toyota"
-                      className="w-full bg-black border border-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary"
+                      className="w-full glass border border-white/10 text-white px-5 py-4 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-base min-h-[50px]"
                     />
                   </div>
                   <div>
-                    <label className="block text-white font-semibold mb-2">Model</label>
+                    <label className="block text-white font-bold mb-3 text-base">Vehicle Model</label>
                     <input
                       type="text"
                       value={customerInfo.vehicleModel}
                       onChange={(e) => setCustomerInfo({ ...customerInfo, vehicleModel: e.target.value })}
                       placeholder="e.g. Camry"
-                      className="w-full bg-black border border-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary"
+                      className="w-full glass border border-white/10 text-white px-5 py-4 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-base min-h-[50px]"
                     />
                   </div>
                   <div>
-                    <label className="block text-white font-semibold mb-2">Year</label>
+                    <label className="block text-white font-bold mb-3 text-base">Vehicle Year</label>
                     <input
                       type="text"
                       value={customerInfo.vehicleYear}
                       onChange={(e) => setCustomerInfo({ ...customerInfo, vehicleYear: e.target.value })}
                       placeholder="e.g. 2020"
-                      className="w-full bg-black border border-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-primary"
+                      className="w-full glass border border-white/10 text-white px-5 py-4 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-base min-h-[50px]"
                     />
                   </div>
                 </div>
 
-                <div className="bg-black border border-primary/30 rounded-lg p-6 mb-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="text-gray-400">Your Total</div>
-                    <div className="text-4xl font-bold text-primary">${calculateTotal()}</div>
+                <div className="glass-strong border border-primary/30 rounded-2xl p-8 mb-10 shadow-xl shadow-primary/10">
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-3">
+                    <div className="text-gray-300 text-lg font-medium">Your Total</div>
+                    <div className="text-4xl md:text-5xl font-bold gradient-text-primary">${calculateTotal()}</div>
                   </div>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm md:text-base text-gray-500 text-center sm:text-right">
                     Including {conditionOptions.find(o => o.value === vehicleCondition)?.label} condition adjustment
                   </div>
                 </div>
 
-                <div className="flex justify-between items-center pt-6 border-t border-gray-800">
+                <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-white/10">
                   <button
                     onClick={() => setStep(3)}
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-400 hover:text-white transition-colors font-semibold text-lg order-2 sm:order-1"
                   >
                     ← Back
                   </button>
@@ -532,11 +542,11 @@ export default function QuotePage() {
                       !customerInfo.address ||
                       !customerInfo.city
                     }
-                    className="bg-gradient-to-r from-primary to-primary-dark hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed text-white px-8 py-3 rounded-lg font-semibold transition-opacity flex items-center gap-2"
+                    className="w-full sm:w-auto bg-gradient-to-r from-primary via-red-600 to-red-700 hover:from-red-600 hover:via-red-700 hover:to-red-800 disabled:from-gray-700 disabled:to-gray-800 disabled:cursor-not-allowed text-white px-10 py-5 rounded-xl font-bold transition-all hover:scale-105 shadow-xl hover:shadow-2xl flex items-center justify-center gap-3 text-lg order-1 sm:order-2"
                   >
                     {submitting ? 'Processing...' : (
                       <>
-                        <Sparkles className="w-5 h-5" />
+                        <Sparkles className="w-6 h-6" />
                         Continue to Schedule
                       </>
                     )}
