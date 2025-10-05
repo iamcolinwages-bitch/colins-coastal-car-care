@@ -151,35 +151,35 @@ export default function Home() {
       </section>
 
       {/* Service Areas Section - COMPLETELY REDESIGNED */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
+      <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black"></div>
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           {/* Section Header */}
-          <div className="text-center mb-16 md:mb-20">
-            <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
-              <MapPin className="w-4 h-4 text-secondary" />
-              <span className="text-sm font-medium text-gray-300">Service Areas</span>
+          <div className="text-center mb-20 md:mb-28">
+            <div className="inline-flex items-center gap-3 glass px-6 py-3 rounded-full mb-8">
+              <MapPin className="w-5 h-5 text-secondary" />
+              <span className="text-base font-medium text-gray-300">Service Areas</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight">
               Serving Southwest Florida
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">
+            <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed">
               Premium mobile detailing services across Collier and Lee counties
             </p>
           </div>
 
           {/* Service Areas Grid - Modern Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {serviceAreas.map((area, index) => (
               <div
                 key={area.name}
-                className="group modern-card p-8 hover:scale-105"
+                className="group modern-card p-10 hover:scale-105"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="flex flex-col items-center text-center space-y-4">
+                <div className="flex flex-col items-center text-center space-y-6">
                   <div className="relative">
                     <div className="absolute inset-0 bg-primary/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div className="relative w-16 h-16 glass-strong rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
@@ -208,26 +208,26 @@ export default function Home() {
       </section>
 
       {/* Features Section - COMPLETELY REDESIGNED */}
-      <section className="relative py-24 md:py-32">
+      <section className="relative py-32 md:py-40 lg:py-48">
         <div className="absolute inset-0 bg-black"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           {/* Section Header */}
-          <div className="text-center mb-16 md:mb-20">
-            <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-gray-300">Why Choose Us</span>
+          <div className="text-center mb-20 md:mb-28">
+            <div className="inline-flex items-center gap-3 glass px-6 py-3 rounded-full mb-8">
+              <Sparkles className="w-5 h-5 text-primary" />
+              <span className="text-base font-medium text-gray-300">Why Choose Us</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight">
               Why Choose C4?
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">
+            <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed">
               Professional service, exceptional results
             </p>
           </div>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {features.map((feature, index) => (
               <div
                 key={feature.title}
@@ -249,7 +249,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section - COMPLETELY REDESIGNED */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
+      <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
         {/* Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary via-red-700 to-red-900"></div>
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20"></div>
@@ -258,14 +258,14 @@ export default function Home() {
         <div className="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 right-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-2xl tracking-tight">
             Ready for a Pristine Ride?
           </h2>
-          <p className="text-xl md:text-2xl text-white/90 mb-12 font-light max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-white/90 mb-16 font-light max-w-3xl mx-auto leading-relaxed">
             Book your mobile detailing service today and experience the C4 difference
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-8">
             <Link
               href="/booking"
               className="group w-full sm:w-auto glass-strong text-white px-12 py-5 rounded-2xl text-lg font-bold transition-all hover:scale-105 hover:shadow-2xl border border-white/30 hover:border-white/50"
@@ -291,8 +291,8 @@ export default function Home() {
       <footer className="relative bg-black border-t border-white/10">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-950/50 to-black"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-24 md:py-32">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-20 mb-16">
             {/* Logo & Description */}
             <div className="space-y-4">
               <Image
