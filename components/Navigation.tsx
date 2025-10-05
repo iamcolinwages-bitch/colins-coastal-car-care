@@ -27,11 +27,12 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3" onClick={() => setIsOpen(false)}>
             <Image
-              src="/logo.png"
+              src="/logo.svg"
               alt="C4 Logo"
               width={50}
               height={50}
               className="w-12 h-12 md:w-14 md:h-14"
+              priority
             />
             <div className="hidden sm:block">
               <div className="text-white font-bold text-base md:text-lg">Colin's Coastal</div>
