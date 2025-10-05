@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Navigation from '@/components/Navigation';
-import { Check, Sparkles } from 'lucide-react';
+import { Check, Sparkles, ArrowRight, Zap } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -122,73 +122,84 @@ export default function ServicesPage() {
       <Navigation />
 
       <div className="min-h-screen pt-20 pb-16">
-        {/* Header */}
-        <section className="bg-gradient-to-r from-primary to-primary-dark py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+        {/* Hero Header - Modern Design */}
+        <section className="relative py-32 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-red-700 to-red-900"></div>
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20"></div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="inline-flex items-center gap-2 glass-strong px-4 py-2 rounded-full mb-6 border border-white/20">
+              <Sparkles className="w-4 h-4 text-white" />
+              <span className="text-sm font-medium text-white">Premium Services</span>
+            </div>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-2xl tracking-tight">
               Our Services & Pricing
             </h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light">
               Professional mobile detailing packages designed to keep your vehicle pristine.
+              <br className="hidden md:block" />
               All prices shown are starting prices.
             </p>
           </div>
         </section>
 
-        {/* Pricing Note */}
-        <div className="bg-gray-900 border-b border-gray-800 py-6">
+        {/* Pricing Legend */}
+        <div className="relative border-y border-white/10 py-8 bg-black/40 backdrop-blur-xl">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-center gap-4 text-sm text-gray-400">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-secondary rounded-full"></div>
-                <span>Sedan Pricing</span>
+            <div className="flex items-center justify-center gap-8 text-sm md:text-base">
+              <div className="flex items-center gap-3">
+                <div className="w-4 h-4 bg-gradient-to-r from-secondary to-blue-600 rounded-full shadow-lg shadow-secondary/50"></div>
+                <span className="text-gray-300 font-medium">Sedan Pricing</span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-primary rounded-full"></div>
-                <span>SUV/Truck Pricing (+$30-$100)</span>
+              <div className="flex items-center gap-3">
+                <div className="w-4 h-4 bg-gradient-to-r from-primary to-red-700 rounded-full shadow-lg shadow-primary/50"></div>
+                <span className="text-gray-300 font-medium">SUV/Truck (+$30-$100)</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Standard Packages */}
-        <section className="py-16 bg-black">
+        <section className="relative py-24 mesh-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
+                <div className="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium text-gray-300">Standard Tier</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
                 Standard Packages
               </h2>
-              <p className="text-gray-400">
+              <p className="text-xl text-gray-400 font-light">
                 Professional detailing at an affordable price
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {packages.filter(pkg => pkg.tier === 'standard').map((pkg) => (
+              {packages.filter(pkg => pkg.tier === 'standard').map((pkg, index) => (
                 <div
                   key={pkg.id}
-                  className={`relative bg-gray-900 border ${
-                    pkg.popular ? 'border-secondary' : 'border-gray-800'
-                  } rounded-xl p-8 hover:border-primary transition-colors`}
+                  className={`group modern-card p-8 ${pkg.popular ? 'ring-2 ring-secondary shadow-2xl shadow-secondary/20' : ''}`}
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
                   {pkg.popular && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <span className="bg-secondary text-white px-4 py-1 rounded-full text-sm font-semibold">
+                      <span className="glass-strong px-6 py-2 rounded-full text-sm font-bold text-white border border-secondary shadow-lg shadow-secondary/30">
                         Most Popular
                       </span>
                     </div>
                   )}
 
-                  <h3 className="text-2xl font-bold text-white mb-2">{pkg.name}</h3>
-                  <p className="text-gray-400 mb-6">{pkg.description}</p>
+                  <h3 className="text-2xl font-bold text-white mb-3">{pkg.name}</h3>
+                  <p className="text-gray-400 mb-6 leading-relaxed">{pkg.description}</p>
 
-                  <div className="mb-6">
-                    <div className="flex items-baseline gap-2 mb-2">
-                      <span className="text-3xl font-bold text-white">${pkg.sedanPrice}</span>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-4xl font-bold text-white">${pkg.sedanPrice}</span>
                       <span className="text-gray-400">Sedan</span>
                     </div>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-3xl font-bold text-primary">${pkg.suvTruckPrice}</span>
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-4xl font-bold gradient-text-primary">${pkg.suvTruckPrice}</span>
                       <span className="text-gray-400">SUV/Truck</span>
                     </div>
                   </div>
@@ -196,17 +207,22 @@ export default function ServicesPage() {
                   <ul className="space-y-3 mb-8">
                     {pkg.services.map((service) => (
                       <li key={service} className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-300">{service}</span>
+                        <div className="mt-1">
+                          <Check className="w-5 h-5 text-secondary" />
+                        </div>
+                        <span className="text-gray-300 leading-relaxed">{service}</span>
                       </li>
                     ))}
                   </ul>
 
                   <Link
                     href="/booking"
-                    className="block w-full bg-primary hover:bg-primary-dark text-white text-center py-3 rounded-lg font-semibold transition-colors"
+                    className="block w-full bg-gradient-to-r from-primary to-red-700 hover:from-red-600 hover:to-red-800 text-white text-center py-4 rounded-xl font-bold transition-all hover:scale-105 hover:shadow-xl hover:shadow-primary/30 group"
                   >
-                    Book Now
+                    <span className="flex items-center justify-center gap-2">
+                      Book Now
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </span>
                   </Link>
                 </div>
               ))}
@@ -215,48 +231,49 @@ export default function ServicesPage() {
         </section>
 
         {/* Premium Packages */}
-        <section className="py-16 bg-gray-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 px-4 py-2 rounded-full mb-4">
-                <Sparkles className="w-5 h-5 text-primary" />
-                <span className="text-primary font-semibold">Premium Service</span>
+        <section className="relative py-24 bg-gradient-to-b from-black via-gray-950 to-black">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40"></div>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 glass-strong px-6 py-3 rounded-full mb-6 border border-primary/30 shadow-xl shadow-primary/20">
+                <Sparkles className="w-5 h-5 text-primary animate-pulse" />
+                <span className="text-sm font-bold gradient-text-primary">Premium Service</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
                 Premium Packages
               </h2>
-              <p className="text-gray-400">
+              <p className="text-xl text-gray-400 font-light">
                 Ultimate care and protection for your vehicle
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {packages.filter(pkg => pkg.tier === 'premium').map((pkg) => (
+              {packages.filter(pkg => pkg.tier === 'premium').map((pkg, index) => (
                 <div
                   key={pkg.id}
-                  className={`relative bg-black border ${
-                    pkg.featured ? 'border-primary ring-2 ring-primary/20' : 'border-gray-800'
-                  } rounded-xl p-8 hover:border-primary transition-all`}
+                  className={`group modern-card p-8 ${pkg.featured ? 'ring-2 ring-primary shadow-2xl shadow-primary/30' : ''}`}
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
                   {pkg.featured && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <span className="bg-gradient-to-r from-primary to-primary-dark text-white px-4 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                      <span className="bg-gradient-to-r from-primary to-red-700 px-6 py-2 rounded-full text-sm font-bold text-white flex items-center gap-2 shadow-2xl shadow-primary/50">
                         <Sparkles className="w-4 h-4" />
                         Best Value
                       </span>
                     </div>
                   )}
 
-                  <h3 className="text-2xl font-bold text-white mb-2">{pkg.name}</h3>
-                  <p className="text-gray-400 mb-6">{pkg.description}</p>
+                  <h3 className="text-2xl font-bold text-white mb-3">{pkg.name}</h3>
+                  <p className="text-gray-400 mb-6 leading-relaxed">{pkg.description}</p>
 
-                  <div className="mb-6">
-                    <div className="flex items-baseline gap-2 mb-2">
-                      <span className="text-3xl font-bold text-white">${pkg.sedanPrice}</span>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-4xl font-bold text-white">${pkg.sedanPrice}</span>
                       <span className="text-gray-400">Sedan</span>
                     </div>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-3xl font-bold text-primary">${pkg.suvTruckPrice}</span>
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-4xl font-bold gradient-text-primary">${pkg.suvTruckPrice}</span>
                       <span className="text-gray-400">SUV/Truck</span>
                     </div>
                   </div>
@@ -264,8 +281,10 @@ export default function ServicesPage() {
                   <ul className="space-y-3 mb-8">
                     {pkg.services.map((service) => (
                       <li key={service} className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-300">{service}</span>
+                        <div className="mt-1">
+                          <Check className="w-5 h-5 text-primary" />
+                        </div>
+                        <span className="text-gray-300 leading-relaxed">{service}</span>
                       </li>
                     ))}
                   </ul>
@@ -274,11 +293,14 @@ export default function ServicesPage() {
                     href="/booking"
                     className={`block w-full ${
                       pkg.featured
-                        ? 'bg-gradient-to-r from-primary to-primary-dark'
-                        : 'bg-primary hover:bg-primary-dark'
-                    } text-white text-center py-3 rounded-lg font-semibold transition-all`}
+                        ? 'bg-gradient-to-r from-primary via-red-600 to-red-700 shadow-xl shadow-primary/40'
+                        : 'bg-gradient-to-r from-primary to-red-700'
+                    } hover:scale-105 text-white text-center py-4 rounded-xl font-bold transition-all hover:shadow-2xl group`}
                   >
-                    Book Now
+                    <span className="flex items-center justify-center gap-2">
+                      Book Now
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </span>
                   </Link>
                 </div>
               ))}
@@ -287,70 +309,84 @@ export default function ServicesPage() {
         </section>
 
         {/* Add-ons */}
-        <section className="py-16 bg-black">
+        <section className="relative py-24 bg-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
+                <Zap className="w-4 h-4 text-secondary" />
+                <span className="text-sm font-medium text-gray-300">Enhance Your Service</span>
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
                 Additional Services
               </h2>
-              <p className="text-gray-400">
+              <p className="text-xl text-gray-400 font-light">
                 Enhance your detailing package with these add-ons
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              {addOns.map((addon) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+              {addOns.map((addon, index) => (
                 <div
                   key={addon.name}
-                  className="bg-gray-900 border border-gray-800 rounded-xl p-6 hover:border-primary transition-colors"
+                  className="group modern-card p-8 hover:scale-105"
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-start justify-between gap-6">
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-white mb-2">{addon.name}</h3>
-                      <p className="text-gray-400">{addon.description}</p>
+                      <h3 className="text-2xl font-bold text-white mb-3">{addon.name}</h3>
+                      <p className="text-gray-400 leading-relaxed">{addon.description}</p>
                     </div>
                     <div className="text-right">
-                      <span className="text-2xl font-bold text-primary">${addon.price}</span>
+                      <span className="text-4xl font-bold gradient-text-primary">${addon.price}</span>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="mt-12 text-center">
-              <p className="text-gray-400 mb-4">Want a custom package?</p>
+            <div className="text-center">
+              <p className="text-gray-400 mb-4 text-lg">Want a custom package?</p>
               <Link
                 href="/quote"
-                className="inline-flex items-center text-primary hover:text-primary-dark font-semibold text-lg"
+                className="inline-flex items-center gap-2 text-primary hover:text-red-400 font-bold text-xl group"
               >
                 Get a Custom Quote
-                <span className="ml-2">→</span>
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="py-16 bg-gradient-to-r from-primary to-primary-dark">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+        <section className="relative py-24 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-red-700 to-red-900"></div>
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20"></div>
+
+          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl">
               Ready to Book Your Service?
             </h2>
-            <p className="text-xl text-white/90 mb-8">
+            <p className="text-xl md:text-2xl text-white/90 mb-12 font-light">
               Choose your package and schedule your mobile detailing today
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link
                 href="/booking"
-                className="w-full sm:w-auto bg-white text-primary hover:bg-gray-100 px-10 py-4 rounded-lg text-lg font-semibold transition-all"
+                className="group w-full sm:w-auto bg-white text-primary px-12 py-5 rounded-2xl text-lg font-bold transition-all hover:scale-105 hover:shadow-2xl hover:bg-gray-100"
               >
-                Book Now
+                <span className="flex items-center justify-center gap-2">
+                  Book Now
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
               </Link>
               <Link
                 href="/quote"
-                className="w-full sm:w-auto bg-transparent border-2 border-white text-white hover:bg-white/10 px-10 py-4 rounded-lg text-lg font-semibold transition-all"
+                className="group w-full sm:w-auto glass-strong text-white px-12 py-5 rounded-2xl text-lg font-bold transition-all hover:scale-105 hover:shadow-2xl border border-white/30 hover:border-white/50"
               >
-                Get Custom Quote
+                <span className="flex items-center justify-center gap-2">
+                  Get Custom Quote
+                  <Zap className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                </span>
               </Link>
             </div>
           </div>
