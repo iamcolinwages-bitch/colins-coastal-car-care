@@ -20,7 +20,7 @@ const packages = [
       'Vacuum all interior surfaces',
       'Wipe down all interior surfaces',
       'Clean interior and exterior glass',
-      'Vacuum door jams',
+      'Wipe down door jams',
     ],
     sedanPrice: 100,
     suvTruckPrice: 130,
@@ -53,7 +53,6 @@ const packages = [
     ],
     sedanPrice: 180,
     suvTruckPrice: 230,
-    popular: true,
   },
   {
     id: 'premium-interior',
@@ -79,7 +78,6 @@ const packages = [
     description: 'Premium exterior detail with wax and protection',
     services: [
       'All Standard Exterior services',
-      'Clay bar treatment',
       'Premium wax application',
       'Wheel detailing',
       'Engine bay wipe down',
@@ -99,7 +97,6 @@ const packages = [
     ],
     sedanPrice: 360,
     suvTruckPrice: 460,
-    featured: true,
   },
 ];
 
@@ -112,7 +109,12 @@ const addOns = [
   {
     name: 'Pet Hair Removal',
     description: 'Thorough pet hair removal from all surfaces',
-    price: 40,
+    price: 50,
+  },
+  {
+    name: 'Clay Bar Treatment',
+    description: 'Remove contaminants and restore smooth paint finish',
+    price: 35,
   },
 ];
 
@@ -171,17 +173,9 @@ export default function ServicesPage() {
               {packages.filter(pkg => pkg.tier === 'standard').map((pkg, index) => (
                 <div
                   key={pkg.id}
-                  className={`group modern-card p-8 ${pkg.popular ? 'ring-2 ring-white shadow-2xl shadow-white/20' : ''}`}
+                  className="group modern-card p-8"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  {pkg.popular && (
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <span className="glass-strong px-6 py-2 rounded-full text-sm font-bold text-white border border-white shadow-lg shadow-white/30">
-                        Most Popular
-                      </span>
-                    </div>
-                  )}
-
                   <h3 className="text-2xl font-bold text-white mb-3">{pkg.name}</h3>
                   <p className="text-gray-400 mb-6 leading-relaxed">{pkg.description}</p>
 
@@ -240,18 +234,9 @@ export default function ServicesPage() {
               {packages.filter(pkg => pkg.tier === 'premium').map((pkg, index) => (
                 <div
                   key={pkg.id}
-                  className={`group modern-card p-8 ${pkg.featured ? 'ring-2 ring-primary shadow-2xl shadow-primary/30' : ''}`}
+                  className="group modern-card p-8"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  {pkg.featured && (
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <span className="bg-gradient-to-r from-primary to-red-700 px-6 py-2 rounded-full text-sm font-bold text-white flex items-center gap-2 shadow-2xl shadow-primary/50">
-                        <Sparkles className="w-4 h-4" />
-                        Best Value
-                      </span>
-                    </div>
-                  )}
-
                   <h3 className="text-2xl font-bold text-white mb-3">{pkg.name}</h3>
                   <p className="text-gray-400 mb-6 leading-relaxed">{pkg.description}</p>
 
@@ -279,11 +264,7 @@ export default function ServicesPage() {
 
                   <Link
                     href="/booking"
-                    className={`block w-full ${
-                      pkg.featured
-                        ? 'bg-gradient-to-r from-primary via-red-600 to-red-700 shadow-xl shadow-primary/40'
-                        : 'bg-gradient-to-r from-primary to-red-700'
-                    } hover:scale-105 text-white text-center py-4 rounded-xl font-bold transition-all hover:shadow-2xl group`}
+                    className="block w-full bg-gradient-to-r from-primary to-red-700 hover:from-red-600 hover:to-red-800 text-white text-center py-4 rounded-xl font-bold transition-all hover:scale-105 hover:shadow-xl hover:shadow-primary/30 group"
                   >
                     <span className="flex items-center justify-center gap-2">
                       Book Now
