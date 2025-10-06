@@ -85,18 +85,10 @@ export default function Home() {
 
         {/* Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40 text-center">
-          {/* Badge */}
-          <div className="mb-8 inline-flex items-center space-x-2 glass-strong px-6 py-3 rounded-full border border-white/10 shadow-2xl hover:scale-105 transition-transform duration-500">
-            <Sparkles className="w-5 h-5 text-primary animate-pulse" />
-            <span className="text-sm md:text-base font-medium bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              Southwest Florida's Premier Mobile Detailing
-            </span>
-          </div>
-
           {/* Main Heading */}
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-8 leading-[1.1] tracking-tight">
-            <span className="block text-white drop-shadow-2xl mb-2">Pristine Cars,</span>
-            <span className="block gradient-text-primary drop-shadow-2xl">Delivered to You</span>
+            <span className="block text-white drop-shadow-2xl mb-2">We Come to You,</span>
+            <span className="block gradient-text-primary drop-shadow-2xl">We Make It New</span>
           </h1>
 
           {/* Subheading */}
@@ -142,16 +134,62 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll Indicator - Modern Design */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-8 h-12 rounded-full border-2 border-white/30 flex items-start justify-center p-2 glass">
-            <div className="w-1.5 h-3 bg-gradient-to-b from-white to-transparent rounded-full animate-pulse"></div>
+        {/* Featured Reviews - Replaces Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 w-full max-w-6xl px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Review 1 */}
+            <div className="glass-strong p-6 rounded-2xl border border-white/10 hover:scale-105 transition-all">
+              <div className="flex gap-1 mb-3">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                ))}
+              </div>
+              <p className="text-white text-sm mb-4 line-clamp-3 leading-relaxed">
+                "Absolutely phenomenal service! My 2022 Tesla Model 3 looks brand new. Every detail was perfect."
+              </p>
+              <div className="border-t border-white/10 pt-3">
+                <div className="text-white font-semibold text-sm">Sarah M.</div>
+                <div className="text-gray-400 text-xs">2022 Tesla Model 3 - Premium Detail</div>
+              </div>
+            </div>
+
+            {/* Review 2 */}
+            <div className="glass-strong p-6 rounded-2xl border border-white/10 hover:scale-105 transition-all">
+              <div className="flex gap-1 mb-3">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                ))}
+              </div>
+              <p className="text-white text-sm mb-4 line-clamp-3 leading-relaxed">
+                "Colin did an amazing job on my BMW X5. The interior detailing was next level. Highly recommend!"
+              </p>
+              <div className="border-t border-white/10 pt-3">
+                <div className="text-white font-semibold text-sm">Michael R.</div>
+                <div className="text-gray-400 text-xs">2021 BMW X5 - Interior + Exterior</div>
+              </div>
+            </div>
+
+            {/* Review 3 */}
+            <div className="glass-strong p-6 rounded-2xl border border-white/10 hover:scale-105 transition-all">
+              <div className="flex gap-1 mb-3">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                ))}
+              </div>
+              <p className="text-white text-sm mb-4 line-clamp-3 leading-relaxed">
+                "Best detailing service I've used in Naples. My Porsche 911 never looked better. Worth every penny!"
+              </p>
+              <div className="border-t border-white/10 pt-3">
+                <div className="text-white font-semibold text-sm">James T.</div>
+                <div className="text-gray-400 text-xs">2023 Porsche 911 - Full Detail</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Service Areas Section - COMPLETELY REDESIGNED */}
-      <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
+      <section className="relative py-24 md:py-32 overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black"></div>
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40"></div>
@@ -195,7 +233,7 @@ export default function Home() {
 
           {/* CTA */}
           <div className="text-center">
-            <p className="text-gray-400 mb-4">Not sure if we service your area?</p>
+            <p className="text-gray-400 mb-3">Not sure if we service your area?</p>
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 text-primary hover:text-red-400 font-semibold text-lg group"
@@ -214,10 +252,6 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           {/* Section Header */}
           <div className="text-center mb-20 md:mb-28">
-            <div className="inline-flex items-center gap-3 glass px-6 py-3 rounded-full mb-8">
-              <Sparkles className="w-5 h-5 text-primary" />
-              <span className="text-base font-medium text-gray-300">Why Choose Us</span>
-            </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight">
               Why Choose C4?
             </h2>
@@ -260,7 +294,7 @@ export default function Home() {
 
         <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-2xl tracking-tight">
-            Ready for a Pristine Ride?
+            Ready for Your New Ride?
           </h2>
           <p className="text-xl md:text-2xl text-white/90 mb-16 font-light max-w-3xl mx-auto leading-relaxed">
             Book your mobile detailing service today and experience the C4 difference
