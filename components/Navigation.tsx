@@ -51,7 +51,8 @@ export default function Navigation() {
               alt="Colin's Coastal Car Care"
               width={200}
               height={50}
-              className="h-12 w-auto md:h-16 drop-shadow-2xl"
+              className="h-12 w-auto md:h-16 drop-shadow-2xl brightness-0 saturate-100 invert"
+              style={{ filter: 'brightness(0) saturate(100%) invert(18%) sepia(98%) saturate(6943%) hue-rotate(357deg) brightness(89%) contrast(113%)' }}
               priority
             />
           </Link>

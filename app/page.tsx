@@ -332,6 +332,7 @@ export default function Home() {
                 width={200}
                 height={50}
                 className="h-14 w-auto drop-shadow-2xl"
+                style={{ filter: 'brightness(0) saturate(100%) invert(18%) sepia(98%) saturate(6943%) hue-rotate(357deg) brightness(89%) contrast(113%)' }}
               />
               <p className="text-gray-400 leading-relaxed">
                 Southwest Florida's premier mobile car detailing service. Excellence in every detail.
