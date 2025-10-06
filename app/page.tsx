@@ -75,14 +75,28 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section - COMPLETELY REDESIGNED */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden mesh-bg">
-        {/* Animated gradient orbs - Red theme */}
-        <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-primary/40 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-red-800/50 rounded-full blur-3xl opacity-30 animate-pulse delay-700"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-950/20 rounded-full blur-3xl opacity-20"></div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+        {/* Gradient background with red tint */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black"></div>
 
-        {/* Mesh overlay */}
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMxRTkwRkYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDE2YzAtMy4zMTQgMi42ODYtNiA2LTZzNi0yLjY4NiA2LTZjMC0zLjMxNC0yLjY4Ni02LTYtNnMtNiAyLjY4Ni02IDZ2Nnoiic8L3BhdGg+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
+        {/* Palm tree silhouettes */}
+        <div className="absolute bottom-0 left-0 w-full h-full opacity-20">
+          <svg className="absolute bottom-0 left-[5%] h-[60%] w-auto" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 200 L48 140 C48 140 30 100 20 80 C15 70 10 50 15 30 C18 15 25 5 30 3 M48 140 C48 140 20 120 10 100 C5 90 0 70 5 50 C8 35 15 25 20 23 M48 140 C48 140 70 120 80 100 C85 90 90 70 85 50 C82 35 75 25 70 23 M48 140 C48 140 60 100 70 80 C75 70 80 50 75 30 C72 15 65 5 60 3" stroke="#B91C1C" strokeWidth="2" fill="none" opacity="0.3"/>
+            <line x1="48" y1="140" x2="50" y2="200" stroke="#7F1D1D" strokeWidth="3"/>
+          </svg>
+          <svg className="absolute bottom-0 right-[10%] h-[50%] w-auto" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 200 L48 150 C48 150 30 110 20 90 C15 80 10 60 15 40 C18 25 25 15 30 13 M48 150 C48 150 20 130 10 110 C5 100 0 80 5 60 C8 45 15 35 20 33 M48 150 C48 150 70 130 80 110 C85 100 90 80 85 60 C82 45 75 35 70 33 M48 150 C48 150 60 110 70 90 C75 80 80 60 75 40 C72 25 65 15 60 13" stroke="#B91C1C" strokeWidth="2" fill="none" opacity="0.4"/>
+            <line x1="48" y1="150" x2="50" y2="200" stroke="#7F1D1D" strokeWidth="3"/>
+          </svg>
+          <svg className="absolute bottom-0 left-[70%] h-[45%] w-auto" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 200 L48 155 C48 155 30 115 20 95 C15 85 10 65 15 45 C18 30 25 20 30 18 M48 155 C48 155 20 135 10 115 C5 105 0 85 5 65 C8 50 15 40 20 38 M48 155 C48 155 70 135 80 115 C85 105 90 85 85 65 C82 50 75 40 70 38 M48 155 C48 155 60 115 70 95 C75 85 80 65 75 45 C72 30 65 20 60 18" stroke="#B91C1C" strokeWidth="2" fill="none" opacity="0.3"/>
+            <line x1="48" y1="155" x2="50" y2="200" stroke="#7F1D1D" strokeWidth="3"/>
+          </svg>
+        </div>
+
+        {/* Red gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent"></div>
 
         {/* Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40 text-center">
