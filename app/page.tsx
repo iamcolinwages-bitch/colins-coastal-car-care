@@ -189,7 +189,7 @@ export default function Home() {
       </section>
 
       {/* Service Areas Section - COMPLETELY REDESIGNED */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
+      <section className="relative py-16 md:py-24 overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black"></div>
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40"></div>
@@ -197,10 +197,6 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           {/* Section Header */}
           <div className="text-center mb-20 md:mb-28">
-            <div className="inline-flex items-center gap-3 glass px-6 py-3 rounded-full mb-8">
-              <MapPin className="w-5 h-5 text-secondary" />
-              <span className="text-base font-medium text-gray-300">Service Areas</span>
-            </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 tracking-tight">
               Serving Southwest Florida
             </h2>
@@ -246,7 +242,7 @@ export default function Home() {
       </section>
 
       {/* Features Section - COMPLETELY REDESIGNED */}
-      <section className="relative py-20 md:py-28">
+      <section className="relative py-16 md:py-24">
         <div className="absolute inset-0 bg-black"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
