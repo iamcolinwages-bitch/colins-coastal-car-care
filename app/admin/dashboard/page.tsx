@@ -152,7 +152,7 @@ export default function AdminDashboard() {
         <div className="p-6 border-b border-gray-800/50">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Image src="/logo.png" alt="C4" width={200} height={50} className="h-10 w-auto" style={{ filter: 'brightness(0) saturate(100%) invert(18%) sepia(98%) saturate(6943%) hue-rotate(357deg) brightness(89%) contrast(113%)' }} />
+              <Image src="/logo.png" alt="C4" width={200} height={50} className="h-10 w-auto" />
               <div className="text-xs text-gray-400 font-medium">ADMIN</div>
             </div>
             <button onClick={() => setSidebarOpen(false)} className="lg:hidden text-gray-400 hover:text-white">
