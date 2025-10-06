@@ -144,7 +144,7 @@ export default function ServicesPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-center gap-8 text-sm md:text-base">
               <div className="flex items-center gap-3">
-                <div className="w-4 h-4 bg-gradient-to-r from-secondary to-blue-600 rounded-full shadow-lg shadow-secondary/50"></div>
+                <div className="w-4 h-4 bg-white rounded-full shadow-lg shadow-white/50"></div>
                 <span className="text-gray-300 font-medium">Sedan Pricing</span>
               </div>
               <div className="flex items-center gap-3">
@@ -171,12 +171,12 @@ export default function ServicesPage() {
               {packages.filter(pkg => pkg.tier === 'standard').map((pkg, index) => (
                 <div
                   key={pkg.id}
-                  className={`group modern-card p-8 ${pkg.popular ? 'ring-2 ring-secondary shadow-2xl shadow-secondary/20' : ''}`}
+                  className={`group modern-card p-8 ${pkg.popular ? 'ring-2 ring-white shadow-2xl shadow-white/20' : ''}`}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   {pkg.popular && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <span className="glass-strong px-6 py-2 rounded-full text-sm font-bold text-white border border-secondary shadow-lg shadow-secondary/30">
+                      <span className="glass-strong px-6 py-2 rounded-full text-sm font-bold text-white border border-white shadow-lg shadow-white/30">
                         Most Popular
                       </span>
                     </div>
@@ -200,7 +200,7 @@ export default function ServicesPage() {
                     {pkg.services.map((service) => (
                       <li key={service} className="flex items-start gap-3">
                         <div className="mt-1">
-                          <Check className="w-5 h-5 text-secondary" />
+                          <Check className="w-5 h-5 text-white" />
                         </div>
                         <span className="text-gray-300 leading-relaxed">{service}</span>
                       </li>

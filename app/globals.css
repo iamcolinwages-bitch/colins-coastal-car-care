@@ -8,8 +8,8 @@
     --foreground: #ffffff;
     --primary: #B91C1C; /* Deep Red - use as accent */
     --primary-dark: #7F1D1D;
-    --secondary: #1E90FF; /* Coastal Blue accent */
-    --secondary-dark: #1a75cc;
+    --secondary: #ffffff; /* White accent */
+    --secondary-dark: #e5e5e5;
 
     /* Gray Scale - More nuanced for modern design */
     --gray-50: #fafafa;
@@ -39,7 +39,7 @@
 
     /* Modern Gradients */
     --gradient-primary: linear-gradient(135deg, #B91C1C 0%, #7F1D1D 100%);
-    --gradient-secondary: linear-gradient(135deg, #1E90FF 0%, #1a75cc 100%);
+    --gradient-secondary: linear-gradient(135deg, #ffffff 0%, #e5e5e5 100%);
     --gradient-mesh: radial-gradient(at 40% 20%, rgba(185, 28, 28, 0.20) 0px, transparent 50%),
                      radial-gradient(at 80% 0%, rgba(185, 28, 28, 0.12) 0px, transparent 50%),
                      radial-gradient(at 0% 50%, rgba(127, 29, 29, 0.15) 0px, transparent 50%),

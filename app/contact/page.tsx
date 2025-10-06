@@ -198,7 +198,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="mt-12 modern-card p-8 ring-2 ring-secondary shadow-2xl shadow-secondary/20">
+              <div className="mt-12 modern-card p-8 ring-2 ring-white shadow-2xl shadow-white/20">
                 <h3 className="text-white font-bold mb-6 text-xl md:text-2xl">Prefer to Book Directly?</h3>
                 <div className="space-y-4">
                   <a

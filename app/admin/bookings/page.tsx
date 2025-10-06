@@ -60,7 +60,7 @@ export default function AdminBookingsPage() {
       case 'confirmed':
         return 'text-green-400 bg-green-400/10 border-green-400/30';
       case 'completed':
-        return 'text-blue-400 bg-blue-400/10 border-blue-400/30';
+        return 'text-white bg-white/10 border-white/30';
       case 'cancelled':
         return 'text-red-400 bg-red-400/10 border-red-400/30';
       default:
@@ -159,7 +159,7 @@ export default function AdminBookingsPage() {
                   {booking.status === 'confirmed' && (
                     <button
                       onClick={() => updateStatus(booking.id, 'completed')}
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2"
+                      className="bg-white hover:bg-gray-100 text-black px-4 py-2 rounded-lg font-semibold flex items-center gap-2"
                     >
                       <CheckCircle className="w-4 h-4" />
                       Mark Complete

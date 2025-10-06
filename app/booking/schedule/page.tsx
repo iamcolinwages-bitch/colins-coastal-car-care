@@ -308,9 +308,9 @@ function ScheduleContent() {
 
                 <div className="flex items-start gap-4">
                   <div className="relative">
-                    <div className="absolute inset-0 bg-secondary/30 rounded-xl blur-lg opacity-60"></div>
+                    <div className="absolute inset-0 bg-white/30 rounded-xl blur-lg opacity-60"></div>
                     <div className="relative w-14 h-14 glass-strong rounded-xl flex items-center justify-center">
-                      <MapPin className="w-7 h-7 text-secondary" />
+                      <MapPin className="w-7 h-7 text-white" />
                     </div>
                   </div>
                   <div>

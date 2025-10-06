@@ -269,7 +269,7 @@ export default function AdminQuotesPage() {
                     {quote.selected_addons?.map((addon: string, idx: number) => (
                       <span
                         key={idx}
-                        className="px-3 py-1 bg-secondary/10 border border-secondary/30 text-secondary rounded-lg text-sm"
+                        className="px-3 py-1 bg-white/10 border border-white/30 text-white rounded-lg text-sm"
                       >
                         {addon}
                       </span>
@@ -300,7 +300,7 @@ export default function AdminQuotesPage() {
                             updateQuoteStatus(quote.id, 'approved', parseFloat(customPrice));
                           }
                         }}
-                        className="flex-1 bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
+                        className="flex-1 bg-white hover:bg-gray-100 text-black px-4 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2"
                       >
                         <DollarSign className="w-5 h-5" />
                         Custom Price

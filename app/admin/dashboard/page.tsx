@@ -103,7 +103,7 @@ export default function AdminDashboard() {
       icon: Calendar,
       label: "Today's Bookings",
       value: stats.todayBookings,
-      gradient: 'from-blue-500 to-blue-700',
+      gradient: 'from-white to-gray-200',
       link: '/admin/bookings',
       trend: '+8%',
     },

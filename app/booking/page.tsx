@@ -67,9 +67,9 @@ export default function BookingPage() {
               {/* Call/Email Option */}
               <div className="group modern-card p-10 hover:scale-105">
                 <div className="relative mb-8">
-                  <div className="absolute inset-0 bg-secondary/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-white/30 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="relative w-20 h-20 glass-strong rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                    <Phone className="w-10 h-10 text-secondary" />
+                    <Phone className="w-10 h-10 text-white" />
                   </div>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">Call or Email</h3>
@@ -80,36 +80,36 @@ export default function BookingPage() {
 
                 <div className="space-y-6 mb-10">
                   <div className="flex items-center gap-4 text-gray-300">
-                    <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Phone className="w-6 h-6 text-secondary" />
+                    <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <div className="text-sm text-gray-500 mb-1">Call us</div>
                       <a
                         href="tel:4696183423"
-                        className="text-white hover:text-secondary transition-colors font-bold text-lg"
+                        className="text-white hover:text-white transition-colors font-bold text-lg"
                       >
                         (469) 618-3423
                       </a>
                     </div>
                   </div>
                   <div className="flex items-center gap-4 text-gray-300">
-                    <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-6 h-6 text-secondary" />
+                    <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <div className="text-sm text-gray-500 mb-1">Email us</div>
                       <a
                         href="mailto:iamcolinwages@gmail.com"
-                        className="text-white hover:text-secondary transition-colors font-bold text-base break-all"
+                        className="text-white hover:text-white transition-colors font-bold text-base break-all"
                       >
                         iamcolinwages@gmail.com
                       </a>
                     </div>
                   </div>
                   <div className="flex items-center gap-4 text-gray-300">
-                    <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Calendar className="w-6 h-6 text-secondary" />
+                    <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Calendar className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <div className="text-sm text-gray-500 mb-1">Hours</div>
@@ -120,7 +120,7 @@ export default function BookingPage() {
 
                 <a
                   href="tel:4696183423"
-                  className="block w-full bg-gradient-to-r from-secondary to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white text-center py-5 rounded-xl font-bold transition-all hover:scale-105 hover:shadow-xl hover:shadow-secondary/30 text-lg"
+                  className="block w-full bg-gradient-to-r from-white to-gray-200 hover:from-gray-100 hover:to-gray-300 text-black text-center py-5 rounded-xl font-bold transition-all hover:scale-105 hover:shadow-xl hover:shadow-white/30 text-lg"
                 >
                   Call Now
                 </a>
