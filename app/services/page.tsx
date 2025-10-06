@@ -116,6 +116,11 @@ const addOns = [
     description: 'Remove contaminants and restore smooth paint finish',
     price: 35,
   },
+  {
+    name: 'Water Spot Removal',
+    description: 'Professional removal of hard water spots and mineral deposits',
+    price: 35,
+  },
 ];
 
 export default function ServicesPage() {
