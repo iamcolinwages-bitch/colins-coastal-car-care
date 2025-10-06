@@ -77,8 +77,9 @@ export default function Home() {
       {/* Hero Section - COMPLETELY REDESIGNED */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden mesh-bg">
         {/* Animated gradient orbs - Red theme */}
-        <div className="absolute top-20 left-10 w-96 h-96 bg-primary/30 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-red-900/40 rounded-full blur-3xl opacity-20 animate-pulse delay-700"></div>
+        <div className="absolute top-20 left-10 w-[500px] h-[500px] bg-primary/40 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-red-800/50 rounded-full blur-3xl opacity-30 animate-pulse delay-700"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-950/20 rounded-full blur-3xl opacity-20"></div>
 
         {/* Mesh overlay */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMxRTkwRkYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDE2YzAtMy4zMTQgMi42ODYtNiA2LTZzNi0yLjY4NiA2LTZjMC0zLjMxNC0yLjY4Ni02LTYtNnMtNiAyLjY4Ni02IDZ2Nnoiic8L3BhdGg+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>

@@ -128,10 +128,6 @@ export default function ServicesPage() {
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20"></div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div className="inline-flex items-center gap-2 glass-strong px-4 py-2 rounded-full mb-6 border border-white/20">
-              <Sparkles className="w-4 h-4 text-white" />
-              <span className="text-sm font-medium text-white">Premium Services</span>
-            </div>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-2xl tracking-tight">
               Our Services & Pricing
             </h1>
@@ -163,10 +159,6 @@ export default function ServicesPage() {
         <section className="relative py-24 mesh-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
-                <div className="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium text-gray-300">Standard Tier</span>
-              </div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
                 Standard Packages
               </h2>
@@ -236,10 +228,6 @@ export default function ServicesPage() {
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 glass-strong px-6 py-3 rounded-full mb-6 border border-primary/30 shadow-xl shadow-primary/20">
-                <Sparkles className="w-5 h-5 text-primary animate-pulse" />
-                <span className="text-sm font-bold gradient-text-primary">Premium Service</span>
-              </div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
                 Premium Packages
               </h2>
@@ -312,10 +300,6 @@ export default function ServicesPage() {
         <section className="relative py-24 bg-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-6">
-                <Zap className="w-4 h-4 text-secondary" />
-                <span className="text-sm font-medium text-gray-300">Enhance Your Service</span>
-              </div>
               <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 tracking-tight">
                 Additional Services
               </h2>

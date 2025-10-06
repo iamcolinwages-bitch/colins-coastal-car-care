@@ -158,10 +158,6 @@ export default function ReviewsPage() {
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20"></div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
-            <div className="inline-flex items-center gap-3 glass-strong px-6 py-3 rounded-full mb-8 border border-white/20">
-              <Star className="w-5 h-5 text-white" />
-              <span className="text-base font-medium text-white">Customer Reviews</span>
-            </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-2xl tracking-tight">
               What Our Customers Say
             </h1>
@@ -176,50 +172,8 @@ export default function ReviewsPage() {
           </div>
         </section>
 
-        {/* Reviews Grid */}
-        <section className="relative py-32 md:py-40 mesh-bg">
-          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-            {loading ? (
-              <div className="text-center py-32">
-                <Loader2 className="w-12 h-12 text-primary animate-spin mx-auto mb-6" />
-                <div className="text-xl text-gray-400">Loading reviews...</div>
-              </div>
-            ) : reviews.length === 0 ? (
-              <div className="text-center py-32">
-                <div className="w-20 h-20 glass-strong rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Star className="w-10 h-10 text-primary" />
-                </div>
-                <div className="text-xl text-gray-400">No reviews yet. Be the first to leave one!</div>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-                {reviews.map((review) => (
-                  <div
-                    key={review.id}
-                    className="group modern-card p-8 hover:scale-105 transition-all"
-                  >
-                    <div className="flex items-center gap-2 mb-6">
-                      {renderStars(review.rating)}
-                    </div>
-                    <p className="text-gray-300 mb-6 line-clamp-4 leading-relaxed text-base">{review.review_text}</p>
-                    <div className="border-t border-white/10 pt-6">
-                      <div className="font-semibold text-white text-lg">{review.customer_name}</div>
-                      {review.service_type && (
-                        <div className="text-sm text-gray-400 mt-1">{review.service_type}</div>
-                      )}
-                      <div className="text-xs text-gray-500 mt-2">
-                        {new Date(review.created_at).toLocaleDateString()}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
-
         {/* Submit Review Section */}
-        <section className="relative py-32 md:py-40 bg-gradient-to-b from-black via-gray-950 to-black">
+        <section className="relative py-20 md:py-28 bg-gradient-to-b from-black via-gray-950 to-black">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDMpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-40"></div>
 
           <div className="relative z-10 max-w-3xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -412,6 +366,48 @@ export default function ReviewsPage() {
                   </button>
                 </div>
               </form>
+            )}
+          </div>
+        </section>
+
+        {/* Reviews Grid */}
+        <section className="relative py-32 md:py-40 mesh-bg">
+          <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+            {loading ? (
+              <div className="text-center py-32">
+                <Loader2 className="w-12 h-12 text-primary animate-spin mx-auto mb-6" />
+                <div className="text-xl text-gray-400">Loading reviews...</div>
+              </div>
+            ) : reviews.length === 0 ? (
+              <div className="text-center py-32">
+                <div className="w-20 h-20 glass-strong rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Star className="w-10 h-10 text-primary" />
+                </div>
+                <div className="text-xl text-gray-400">No reviews yet. Be the first to leave one!</div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                {reviews.map((review) => (
+                  <div
+                    key={review.id}
+                    className="group modern-card p-8 hover:scale-105 transition-all"
+                  >
+                    <div className="flex items-center gap-2 mb-6">
+                      {renderStars(review.rating)}
+                    </div>
+                    <p className="text-gray-300 mb-6 line-clamp-4 leading-relaxed text-base">{review.review_text}</p>
+                    <div className="border-t border-white/10 pt-6">
+                      <div className="font-semibold text-white text-lg">{review.customer_name}</div>
+                      {review.service_type && (
+                        <div className="text-sm text-gray-400 mt-1">{review.service_type}</div>
+                      )}
+                      <div className="text-xs text-gray-500 mt-2">
+                        {new Date(review.created_at).toLocaleDateString()}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             )}
           </div>
         </section>

@@ -40,9 +40,10 @@
     /* Modern Gradients */
     --gradient-primary: linear-gradient(135deg, #B91C1C 0%, #7F1D1D 100%);
     --gradient-secondary: linear-gradient(135deg, #1E90FF 0%, #1a75cc 100%);
-    --gradient-mesh: radial-gradient(at 40% 20%, rgba(185, 28, 28, 0.15) 0px, transparent 50%),
-                     radial-gradient(at 80% 0%, rgba(30, 144, 255, 0.1) 0px, transparent 50%),
-                     radial-gradient(at 0% 50%, rgba(185, 28, 28, 0.08) 0px, transparent 50%);
+    --gradient-mesh: radial-gradient(at 40% 20%, rgba(185, 28, 28, 0.20) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, rgba(185, 28, 28, 0.12) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, rgba(127, 29, 29, 0.15) 0px, transparent 50%),
+                     radial-gradient(at 50% 100%, rgba(153, 27, 27, 0.10) 0px, transparent 50%);
   }
 
   * {
