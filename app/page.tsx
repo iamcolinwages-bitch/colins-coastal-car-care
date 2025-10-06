@@ -76,27 +76,79 @@ export default function Home() {
 
       {/* Hero Section - COMPLETELY REDESIGNED */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-        {/* Gradient background with red tint */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-950 to-black"></div>
+        {/* Palm tree silhouettes - Realistic Florida coastal style */}
+        <div className="absolute bottom-0 left-0 w-full h-full pointer-events-none">
+          {/* Left palm tree - tall */}
+          <svg className="absolute bottom-0 left-[5%] h-[70%] w-auto opacity-40" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Trunk */}
+            <path d="M95 400 Q98 350 95 300 Q93 250 96 200 Q98 150 95 100 Q93 50 95 20" stroke="#B91C1C" strokeWidth="8" fill="none" strokeLinecap="round"/>
+            {/* Fronds */}
+            <path d="M95 20 Q60 10 30 5 Q20 3 15 8" stroke="#B91C1C" strokeWidth="4" fill="none" strokeLinecap="round"/>
+            <path d="M95 20 Q70 15 45 18 Q35 20 32 25" stroke="#B91C1C" strokeWidth="4" fill="none" strokeLinecap="round"/>
+            <path d="M95 20 Q75 25 55 35 Q48 40 48 47" stroke="#B91C1C" strokeWidth="4" fill="none" strokeLinecap="round"/>
+            <path d="M95 20 Q130 10 160 5 Q170 3 175 8" stroke="#B91C1C" strokeWidth="4" fill="none" strokeLinecap="round"/>
+            <path d="M95 20 Q120 15 145 18 Q155 20 158 25" stroke="#B91C1C" strokeWidth="4" fill="none" strokeLinecap="round"/>
+            <path d="M95 20 Q115 25 135 35 Q142 40 142 47" stroke="#B91C1C" strokeWidth="4" fill="none" strokeLinecap="round"/>
+            <path d="M95 20 Q95 5 95 0" stroke="#B91C1C" strokeWidth="4" fill="none" strokeLinecap="round"/>
+            <path d="M95 20 Q85 8 75 3" stroke="#B91C1C" strokeWidth="3" fill="none" strokeLinecap="round"/>
+            <path d="M95 20 Q105 8 115 3" stroke="#B91C1C" strokeWidth="3" fill="none" strokeLinecap="round"/>
+          </svg>
 
-        {/* Palm tree silhouettes */}
-        <div className="absolute bottom-0 left-0 w-full h-full opacity-20">
-          <svg className="absolute bottom-0 left-[5%] h-[60%] w-auto" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 200 L48 140 C48 140 30 100 20 80 C15 70 10 50 15 30 C18 15 25 5 30 3 M48 140 C48 140 20 120 10 100 C5 90 0 70 5 50 C8 35 15 25 20 23 M48 140 C48 140 70 120 80 100 C85 90 90 70 85 50 C82 35 75 25 70 23 M48 140 C48 140 60 100 70 80 C75 70 80 50 75 30 C72 15 65 5 60 3" stroke="#B91C1C" strokeWidth="2" fill="none" opacity="0.3"/>
-            <line x1="48" y1="140" x2="50" y2="200" stroke="#7F1D1D" strokeWidth="3"/>
+          {/* Right palm tree - medium */}
+          <svg className="absolute bottom-0 right-[8%] h-[55%] w-auto opacity-50" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Trunk */}
+            <path d="M100 400 Q95 350 98 300 Q101 250 98 200 Q96 150 99 100 Q101 50 98 25" stroke="#DC2626" strokeWidth="7" fill="none" strokeLinecap="round"/>
+            {/* Fronds */}
+            <path d="M98 25 Q65 18 35 15 Q25 14 20 18" stroke="#DC2626" strokeWidth="4" fill="none" strokeLinecap="round"/>
+            <path d="M98 25 Q72 22 48 28 Q40 30 38 35" stroke="#DC2626" strokeWidth="4" fill="none" strokeLinecap="round"/>
+            <path d="M98 25 Q78 32 60 45 Q55 50 55 57" stroke="#DC2626" strokeWidth="4" fill="none" strokeLinecap="round"/>
+            <path d="M98 25 Q131 18 161 15 Q171 14 176 18" stroke="#DC2626" strokeWidth="4" fill="none" strokeLinecap="round"/>
+            <path d="M98 25 Q124 22 148 28 Q156 30 158 35" stroke="#DC2626" strokeWidth="4" fill="none" strokeLinecap="round"/>
+            <path d="M98 25 Q118 32 136 45 Q141 50 141 57" stroke="#DC2626" strokeWidth="4" fill="none" strokeLinecap="round"/>
+            <path d="M98 25 Q98 12 98 5" stroke="#DC2626" strokeWidth="4" fill="none" strokeLinecap="round"/>
           </svg>
-          <svg className="absolute bottom-0 right-[10%] h-[50%] w-auto" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 200 L48 150 C48 150 30 110 20 90 C15 80 10 60 15 40 C18 25 25 15 30 13 M48 150 C48 150 20 130 10 110 C5 100 0 80 5 60 C8 45 15 35 20 33 M48 150 C48 150 70 130 80 110 C85 100 90 80 85 60 C82 45 75 35 70 33 M48 150 C48 150 60 110 70 90 C75 80 80 60 75 40 C72 25 65 15 60 13" stroke="#B91C1C" strokeWidth="2" fill="none" opacity="0.4"/>
-            <line x1="48" y1="150" x2="50" y2="200" stroke="#7F1D1D" strokeWidth="3"/>
+
+          {/* Center-left palm tree - short */}
+          <svg className="absolute bottom-0 left-[35%] h-[45%] w-auto opacity-35" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Trunk */}
+            <path d="M105 400 Q108 350 105 300 Q103 270 105 240 Q107 210 105 180" stroke="#B91C1C" strokeWidth="6" fill="none" strokeLinecap="round"/>
+            {/* Fronds */}
+            <path d="M105 180 Q75 172 45 168 Q35 167 30 171" stroke="#B91C1C" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+            <path d="M105 180 Q82 177 58 182 Q50 184 48 189" stroke="#B91C1C" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+            <path d="M105 180 Q88 186 70 196 Q65 200 65 206" stroke="#B91C1C" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+            <path d="M105 180 Q135 172 165 168 Q175 167 180 171" stroke="#B91C1C" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+            <path d="M105 180 Q128 177 152 182 Q160 184 162 189" stroke="#B91C1C" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+            <path d="M105 180 Q122 186 140 196 Q145 200 145 206" stroke="#B91C1C" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+            <path d="M105 180 Q105 170 105 165" stroke="#B91C1C" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
           </svg>
-          <svg className="absolute bottom-0 left-[70%] h-[45%] w-auto" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 200 L48 155 C48 155 30 115 20 95 C15 85 10 65 15 45 C18 30 25 20 30 18 M48 155 C48 155 20 135 10 115 C5 105 0 85 5 65 C8 50 15 40 20 38 M48 155 C48 155 70 135 80 115 C85 105 90 85 85 65 C82 50 75 40 70 38 M48 155 C48 155 60 115 70 95 C75 85 80 65 75 45 C72 30 65 20 60 18" stroke="#B91C1C" strokeWidth="2" fill="none" opacity="0.3"/>
-            <line x1="48" y1="155" x2="50" y2="200" stroke="#7F1D1D" strokeWidth="3"/>
+
+          {/* Far right palm tree - tall */}
+          <svg className="absolute bottom-0 right-[25%] h-[65%] w-auto opacity-30" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Trunk */}
+            <path d="M92 400 Q90 350 93 300 Q95 250 92 200 Q90 150 93 100 Q95 50 92 18" stroke="#EF4444" strokeWidth="7" fill="none" strokeLinecap="round"/>
+            {/* Fronds */}
+            <path d="M92 18 Q62 12 32 10 Q22 9 17 13" stroke="#EF4444" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+            <path d="M92 18 Q68 14 44 20 Q36 22 34 27" stroke="#EF4444" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+            <path d="M92 18 Q74 24 56 36 Q51 41 51 48" stroke="#EF4444" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+            <path d="M92 18 Q122 12 152 10 Q162 9 167 13" stroke="#EF4444" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+            <path d="M92 18 Q116 14 140 20 Q148 22 150 27" stroke="#EF4444" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+            <path d="M92 18 Q110 24 128 36 Q133 41 133 48" stroke="#EF4444" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+            <path d="M92 18 Q92 8 92 2" stroke="#EF4444" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+          </svg>
+
+          {/* Additional small palm on far left */}
+          <svg className="absolute bottom-0 left-[25%] h-[40%] w-auto opacity-25" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* Trunk */}
+            <path d="M98 400 Q96 360 98 320 Q100 290 98 260" stroke="#DC2626" strokeWidth="5" fill="none" strokeLinecap="round"/>
+            {/* Fronds */}
+            <path d="M98 260 Q70 254 42 252 Q34 252 30 255" stroke="#DC2626" strokeWidth="3" fill="none" strokeLinecap="round"/>
+            <path d="M98 260 Q77 257 56 262 Q50 264 49 268" stroke="#DC2626" strokeWidth="3" fill="none" strokeLinecap="round"/>
+            <path d="M98 260 Q83 266 68 276 Q64 280 64 285" stroke="#DC2626" strokeWidth="3" fill="none" strokeLinecap="round"/>
+            <path d="M98 260 Q126 254 154 252 Q162 252 166 255" stroke="#DC2626" strokeWidth="3" fill="none" strokeLinecap="round"/>
+            <path d="M98 260 Q119 257 140 262 Q146 264 147 268" stroke="#DC2626" strokeWidth="3" fill="none" strokeLinecap="round"/>
+            <path d="M98 260 Q113 266 128 276 Q132 280 132 285" stroke="#DC2626" strokeWidth="3" fill="none" strokeLinecap="round"/>
           </svg>
         </div>
-
-        {/* Red gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-transparent"></div>
 
         {/* Content */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40 text-center">
