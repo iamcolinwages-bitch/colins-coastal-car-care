@@ -15,9 +15,9 @@ export default function BookingPage() {
 
           <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 drop-shadow-2xl tracking-tight">
-              Booking Your Detail,
+              Booking Your Detail
               <br />
-              <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Made Easy</span>
+              Made Easy
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light leading-relaxed">
               Get started with a custom quote to ensure the perfect service for your vehicle
