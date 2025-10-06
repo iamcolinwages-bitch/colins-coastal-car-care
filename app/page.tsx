@@ -76,9 +76,9 @@ export default function Home() {
 
       {/* Hero Section - COMPLETELY REDESIGNED */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden mesh-bg">
-        {/* Animated gradient orbs */}
+        {/* Animated gradient orbs - Red theme */}
         <div className="absolute top-20 left-10 w-96 h-96 bg-primary/30 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/30 rounded-full blur-3xl opacity-20 animate-pulse delay-700"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-red-900/40 rounded-full blur-3xl opacity-20 animate-pulse delay-700"></div>
 
         {/* Mesh overlay */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMxRTkwRkYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDE2YzAtMy4zMTQgMi42ODYtNiA2LTZzNi0yLjY4NiA2LTZjMC0zLjMxNC0yLjY4Ni02LTYtNnMtNiAyLjY4Ni02IDZ2Nnoiic8L3BhdGg+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
@@ -123,7 +123,7 @@ export default function Home() {
           </div>
 
           {/* Social Proof */}
-          <div className="flex flex-wrap items-center justify-center gap-3 text-base md:text-lg">
+          <div className="flex flex-wrap items-center justify-center gap-3 text-base md:text-lg mb-20">
             <div className="flex gap-1">
               {[1, 2, 3, 4, 5].map((i) => (
                 <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400 drop-shadow-lg" />
@@ -132,10 +132,9 @@ export default function Home() {
             <span className="text-white font-semibold">5.0</span>
             <span className="text-gray-400">from our satisfied customers</span>
           </div>
-        </div>
 
-        {/* Featured Reviews - Replaces Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 w-full max-w-6xl px-6">
+          {/* Featured Reviews - Below Social Proof */}
+          <div className="w-full max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Review 1 */}
             <div className="glass-strong p-6 rounded-2xl border border-white/10 hover:scale-105 transition-all">
@@ -184,6 +183,7 @@ export default function Home() {
                 <div className="text-gray-400 text-xs">2023 Porsche 911 - Full Detail</div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </section>
@@ -246,7 +246,7 @@ export default function Home() {
       </section>
 
       {/* Features Section - COMPLETELY REDESIGNED */}
-      <section className="relative py-32 md:py-40 lg:py-48">
+      <section className="relative py-20 md:py-28">
         <div className="absolute inset-0 bg-black"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
