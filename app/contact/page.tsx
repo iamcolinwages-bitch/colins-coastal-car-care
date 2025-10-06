@@ -149,10 +149,10 @@ export default function ContactPage() {
                     <div className="min-w-0">
                       <h3 className="text-white font-bold mb-2 text-lg md:text-xl">Email</h3>
                       <a
-                        href="mailto:iamColinwages@gmail.com"
+                        href="mailto:iamcolinwages@gmail.com"
                         className="text-gray-300 hover:text-primary transition-colors text-base md:text-lg font-semibold break-all"
                       >
-                        iamColinwages@gmail.com
+                        iamcolinwages@gmail.com
                       </a>
                     </div>
                   </div>

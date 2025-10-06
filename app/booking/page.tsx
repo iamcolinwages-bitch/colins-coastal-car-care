@@ -106,10 +106,10 @@ export default function BookingPage() {
                     <div>
                       <div className="text-sm text-gray-500 mb-1">Email us</div>
                       <a
-                        href="mailto:iamColinwages@gmail.com"
+                        href="mailto:iamcolinwages@gmail.com"
                         className="text-white hover:text-secondary transition-colors font-bold text-base break-all"
                       >
-                        iamColinwages@gmail.com
+                        iamcolinwages@gmail.com
                       </a>
                     </div>
                   </div>

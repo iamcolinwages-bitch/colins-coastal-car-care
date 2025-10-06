@@ -377,8 +377,8 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">@</span>
-                  <a href="mailto:iamColinwages@gmail.com" className="hover:text-white transition-colors break-all">
-                    iamColinwages@gmail.com
+                  <a href="mailto:iamcolinwages@gmail.com" className="hover:text-white transition-colors break-all">
+                    iamcolinwages@gmail.com
                   </a>
                 </li>
                 <li className="flex items-center gap-2">
