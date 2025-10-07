@@ -20,7 +20,7 @@ export default function BookingPage() {
               Made Easy
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light leading-relaxed">
-              Paradise-ready shine delivered to your driveway - let's make your ride as bright as a Naples sunset
+              Paradise-ready shine delivered to your driveway - let's make your ride as bright as a South Florida sunset
             </p>
           </div>
         </section>

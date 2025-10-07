@@ -95,8 +95,15 @@ export default function QuotePage() {
       }
     });
 
-    // Apply condition multiplier
-    const multiplier = conditionMultipliers?.[vehicleCondition] || 1.0;
+    // Apply condition multiplier - fallback to hardcoded if DB multipliers not loaded
+    let multiplier = 1.0;
+    if (conditionMultipliers && conditionMultipliers[vehicleCondition]) {
+      multiplier = conditionMultipliers[vehicleCondition];
+    } else {
+      const condition = conditionOptions.find(c => c.value === vehicleCondition);
+      multiplier = condition?.multiplier || 1.0;
+    }
+
     return Math.round(baseTotal * multiplier);
   };
 
