@@ -322,7 +322,28 @@ export default function QuotePage() {
                                     checked={selectedPackages.includes(pkg.id)}
                                     onChange={(e) => {
                                       if (e.target.checked) {
-                                        setSelectedPackages([...selectedPackages, pkg.id]);
+                                        // Determine the type of this package (Interior, Exterior, Combined)
+                                        const packageType = pkg.name.includes('Interior') ? 'Interior'
+                                          : pkg.name.includes('Exterior') ? 'Exterior'
+                                          : pkg.name.includes('Combined') ? 'Combined'
+                                          : null;
+
+                                        // Remove any other packages of the same type
+                                        const filteredPackages = selectedPackages.filter(selectedId => {
+                                          const selectedPkg = packages.find(p => p.id === selectedId);
+                                          if (!selectedPkg || !packageType) return true;
+
+                                          // Keep packages that are NOT the same type
+                                          const selectedType = selectedPkg.name.includes('Interior') ? 'Interior'
+                                            : selectedPkg.name.includes('Exterior') ? 'Exterior'
+                                            : selectedPkg.name.includes('Combined') ? 'Combined'
+                                            : null;
+
+                                          return selectedType !== packageType;
+                                        });
+
+                                        // Add the newly selected package
+                                        setSelectedPackages([...filteredPackages, pkg.id]);
                                       } else {
                                         setSelectedPackages(selectedPackages.filter((id) => id !== pkg.id));
                                       }
