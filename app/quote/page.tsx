@@ -9,8 +9,15 @@ import { supabase } from '@/lib/supabase';
 interface Package {
   id: string;
   name: string;
-  sedan_price: number;
-  suv_truck_price: number;
+  vehicle_type_prices: {
+    sedan?: number;
+    suv_mid?: number;
+    suv_large?: number;
+    pickup_full?: number;
+    coupe?: number;
+    hatchback?: number;
+    [key: string]: number | undefined;
+  };
 }
 
 interface AddOn {
@@ -103,11 +110,11 @@ export default function QuotePage() {
     selectedPackages.forEach((pkgId) => {
       const pkg = packages.find((p) => p.id === pkgId);
       console.log(`Package ${pkgId}:`, pkg);
-      if (pkg) {
-        const price = vehicleType === 'sedan'
-          ? (pkg.sedan_price ?? 0)
-          : (pkg.suv_truck_price ?? 0);
-        console.log(`  Price for ${vehicleType}:`, price);
+      if (pkg && pkg.vehicle_type_prices) {
+        // Map vehicle types: 'sedan' stays 'sedan', 'suv_truck' maps to 'suv_mid'
+        const priceKey = vehicleType === 'sedan' ? 'sedan' : 'suv_mid';
+        const price = pkg.vehicle_type_prices[priceKey] ?? 0;
+        console.log(`  Price for ${vehicleType} (using key ${priceKey}):`, price);
         const numPrice = Number(price);
         console.log(`  Converted to number:`, numPrice);
         if (!isNaN(numPrice)) {
@@ -327,7 +334,7 @@ export default function QuotePage() {
                                       {pkg.name.replace(`${category} `, '')}
                                     </div>
                                     <div className="text-sm text-gray-400">
-                                      Sedan: ${pkg.sedan_price} | SUV/Truck: ${pkg.suv_truck_price}
+                                      Sedan: ${pkg.vehicle_type_prices?.sedan ?? 0} | SUV/Truck: ${pkg.vehicle_type_prices?.suv_mid ?? 0}
                                     </div>
                                   </div>
                                 </label>
