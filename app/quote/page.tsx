@@ -213,31 +213,44 @@ export default function QuotePage() {
                 <div className="mb-10">
                   <h3 className="text-xl font-bold text-white mb-6">Packages</h3>
                   <div className="space-y-4">
-                    {packages.map((pkg) => (
-                      <label
-                        key={pkg.id}
-                        className="flex items-center gap-4 md:gap-6 glass hover:bg-white/10 hover:border-primary/50 rounded-xl p-5 md:p-6 cursor-pointer transition-all min-h-[60px]"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={selectedPackages.includes(pkg.id)}
-                          onChange={(e) => {
-                            if (e.target.checked) {
-                              setSelectedPackages([...selectedPackages, pkg.id]);
-                            } else {
-                              setSelectedPackages(selectedPackages.filter((id) => id !== pkg.id));
-                            }
-                          }}
-                          className="w-6 h-6 text-primary rounded-lg flex-shrink-0"
-                        />
-                        <div className="flex-1 min-w-0">
-                          <div className="text-white font-bold text-base md:text-lg mb-1">{pkg.name}</div>
-                          <div className="text-sm md:text-base text-gray-400">
-                            Sedan: ${pkg.sedan_price} | SUV/Truck: ${pkg.suv_truck_price}
+                    {/* Group packages by category */}
+                    {['Standard', 'Premium', 'Ultimate'].map((category) => {
+                      const categoryPackages = packages.filter(pkg => pkg.name.includes(category));
+                      if (categoryPackages.length === 0) return null;
+
+                      return (
+                        <div key={category} className="glass hover:bg-white/10 hover:border-primary/50 rounded-xl p-5 md:p-6 transition-all">
+                          <div className="flex items-start gap-4 md:gap-6">
+                            <input
+                              type="checkbox"
+                              checked={categoryPackages.some(pkg => selectedPackages.includes(pkg.id))}
+                              onChange={(e) => {
+                                if (e.target.checked) {
+                                  // Add all packages in this category
+                                  const categoryIds = categoryPackages.map(p => p.id);
+                                  setSelectedPackages([...selectedPackages.filter(id => !categoryIds.includes(id)), ...categoryIds]);
+                                } else {
+                                  // Remove all packages in this category
+                                  const categoryIds = categoryPackages.map(p => p.id);
+                                  setSelectedPackages(selectedPackages.filter(id => !categoryIds.includes(id)));
+                                }
+                              }}
+                              className="w-6 h-6 text-primary rounded-lg flex-shrink-0 mt-1"
+                            />
+                            <div className="flex-1 min-w-0">
+                              <div className="text-white font-bold text-base md:text-lg mb-2">{category} Package</div>
+                              <div className="text-sm md:text-base text-gray-400 space-y-1">
+                                {categoryPackages.map(pkg => (
+                                  <div key={pkg.id}>
+                                    {pkg.name.replace(`${category} `, '')} - Sedan: ${pkg.sedan_price} | SUV/Truck: ${pkg.suv_truck_price}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </label>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
 
