@@ -57,8 +57,8 @@ async function fixReviews() {
       customer_name: 'Jasper Chen',
       email: 'jchen@example.com',
       rating: 5,
-      review_text: 'Outstanding service from start to finish! My Porsche 911 looks better than the day I bought it. Colin\'s ceramic coating application was flawless, and his professionalism is top-tier. Worth every single penny. Will definitely be a regular customer!',
-      service_type: '2023 Porsche 911 - Premium Exterior + Ceramic',
+      review_text: 'Outstanding service from start to finish! My Porsche 911 looks better than the day I bought it. Colin\'s attention to detail and professionalism is top-tier. Worth every single penny. Will definitely be a regular customer!',
+      service_type: '2023 Porsche 911 - Premium Exterior',
       status: 'approved'
     },
     {

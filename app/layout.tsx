@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Colin's Coastal Car Care | Mobile Detailing Naples FL",
-  description: "Premium mobile car detailing in Naples, Marco Island, Bonita Springs & Estero. Professional interior & exterior detailing, ceramic coating, and more. Book online today!",
-  keywords: "mobile car detailing, auto detailing Naples FL, car wash Southwest Florida, ceramic coating, premium detailing",
+  description: "Premium mobile car detailing in Naples, Marco Island, Bonita Springs & Estero. Professional interior & exterior detailing and more. Book online today!",
+  keywords: "mobile car detailing, auto detailing Naples FL, car wash Southwest Florida, premium detailing",
 };
 
 export default function RootLayout({

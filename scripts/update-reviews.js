@@ -39,7 +39,7 @@ async function updateReviews() {
       customer_name: 'Robert Martinez',
       email: 'rmartinez@example.com',
       rating: 5,
-      review_text: 'Outstanding service from start to finish! Colin detailed my 2021 Mercedes-Benz E-Class and it looks absolutely stunning. The paint correction and ceramic coating were flawless. Definitely worth the investment!',
+      review_text: 'Outstanding service from start to finish! Colin detailed my 2021 Mercedes-Benz E-Class and it looks absolutely stunning. The attention to detail was flawless. Definitely worth the investment!',
       service_type: '2021 Mercedes-Benz E-Class - Premium Combined',
       status: 'approved'
     },

@@ -7,7 +7,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Colin\'s Coastal Car Care | Premium Mobile Detailing in Naples, FL',
   description: 'Professional mobile car detailing serving Naples, Marco Island, Bonita Springs, and Estero. Premium interior and exterior detailing packages. Book online today!',
-  keywords: 'car detailing Naples FL, mobile car detailing, auto detailing Marco Island, car wash Bonita Springs, detailing Estero, ceramic coating Naples, premium car care Southwest Florida',
+  keywords: 'car detailing Naples FL, mobile car detailing, auto detailing Marco Island, car wash Bonita Springs, detailing Estero, premium car care Southwest Florida',
   openGraph: {
     title: 'Colin\'s Coastal Car Care - Mobile Detailing Naples FL',
     description: 'Premium mobile car detailing serving Southwest Florida. Professional service, exceptional results.',
