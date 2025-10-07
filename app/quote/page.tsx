@@ -190,6 +190,8 @@ export default function QuotePage() {
         last_name: customerInfo.lastName,
         email: customerInfo.email,
         phone: customerInfo.phone,
+        address: customerInfo.address,
+        city: customerInfo.city,
         vehicle_type: vehicleType,
         vehicle_condition: vehicleCondition,
         vehicle_make: customerInfo.vehicleMake,

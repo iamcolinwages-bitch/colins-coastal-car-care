@@ -110,19 +110,27 @@ function ScheduleContent() {
     setError('');
 
     try {
-      // Create booking
+      // Create booking with all required fields from schema
       const { data: booking, error: bookingError } = await supabase
         .from('bookings')
         .insert({
           customer_id: quote.customer_id,
           quote_id: quote.id,
+          first_name: quote.first_name,
+          last_name: quote.last_name,
+          email: quote.email,
+          phone: quote.phone,
+          address: quote.address || '',
+          city: quote.city || '',
+          vehicle_type: quote.vehicle_type,
+          vehicle_make: quote.vehicle_make,
+          vehicle_model: quote.vehicle_model,
+          vehicle_year: quote.vehicle_year,
+          selected_addons: quote.selected_addons || [],
           scheduled_date: bookingData.date,
           scheduled_time: bookingData.time,
-          location: quote.city,
-          services: quote.selected_packages,
-          total_price: quote.approved_price,
-          vehicle_condition: quote.vehicle_condition,
-          status: 'pending',
+          total_price: quote.approved_price || quote.calculated_total,
+          status: 'scheduled',
           notes: bookingData.notes,
         })
         .select()
