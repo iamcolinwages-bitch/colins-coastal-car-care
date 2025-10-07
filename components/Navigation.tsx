@@ -66,6 +66,13 @@ export default function Navigation() {
               <div className="absolute inset-0 bg-white/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
             </Link>
             <Link
+              href="/portfolio"
+              className="relative px-4 py-2 text-gray-300 hover:text-white transition-all font-medium group"
+            >
+              <span className="relative z-10">Portfolio</span>
+              <div className="absolute inset-0 bg-white/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+            </Link>
+            <Link
               href="/quote"
               className="relative px-4 py-2 text-gray-300 hover:text-white transition-all font-medium group"
             >
@@ -133,6 +140,13 @@ export default function Navigation() {
                 onClick={() => setIsOpen(false)}
               >
                 Services
+              </Link>
+              <Link
+                href="/portfolio"
+                className="block px-5 py-4 text-gray-200 hover:text-white hover:bg-white/10 rounded-xl transition-all font-medium backdrop-blur-sm"
+                onClick={() => setIsOpen(false)}
+              >
+                Portfolio
               </Link>
               <Link
                 href="/quote"
