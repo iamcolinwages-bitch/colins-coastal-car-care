@@ -63,6 +63,10 @@ export default function QuotePage() {
           supabase.from('admin_settings').select('value').eq('key', 'condition_multipliers').single(),
         ]);
 
+        console.log('Packages loaded:', packagesRes.data);
+        console.log('Add-ons loaded:', addOnsRes.data);
+        console.log('Multipliers loaded:', multipliersRes.data);
+
         if (packagesRes.data) setPackages(packagesRes.data);
         if (addOnsRes.data) setAddOns(addOnsRes.data);
         if (multipliersRes.data) setConditionMultipliers(multipliersRes.data.value);
@@ -75,36 +79,80 @@ export default function QuotePage() {
     fetchData();
   }, []);
 
+  // Format total for display - ensures we never show NaN
+  const formatTotal = (value: number) => {
+    if (isNaN(value) || !isFinite(value)) {
+      return '0';
+    }
+    return value.toString();
+  };
+
   // Calculate total with condition multiplier
   const calculateTotal = () => {
     let baseTotal = 0;
 
-    // Add package prices
+    console.log('=== QUOTE CALCULATION DEBUG ===');
+    console.log('Selected packages:', selectedPackages);
+    console.log('Available packages:', packages);
+    console.log('Selected add-ons:', selectedAddOns);
+    console.log('Available add-ons:', addOns);
+    console.log('Vehicle type:', vehicleType);
+    console.log('Vehicle condition:', vehicleCondition);
+
+    // Add package prices with null safety
     selectedPackages.forEach((pkgId) => {
       const pkg = packages.find((p) => p.id === pkgId);
+      console.log(`Package ${pkgId}:`, pkg);
       if (pkg) {
-        baseTotal += vehicleType === 'sedan' ? pkg.sedan_price : pkg.suv_truck_price;
+        const price = vehicleType === 'sedan'
+          ? (pkg.sedan_price ?? 0)
+          : (pkg.suv_truck_price ?? 0);
+        console.log(`  Price for ${vehicleType}:`, price);
+        const numPrice = Number(price);
+        console.log(`  Converted to number:`, numPrice);
+        if (!isNaN(numPrice)) {
+          baseTotal += numPrice;
+        }
       }
     });
 
-    // Add add-on prices
+    // Add add-on prices with null safety
     selectedAddOns.forEach((addOnId) => {
       const addOn = addOns.find((a) => a.id === addOnId);
+      console.log(`Add-on ${addOnId}:`, addOn);
       if (addOn) {
-        baseTotal += addOn.price;
+        console.log(`  Price:`, addOn.price);
+        const numPrice = Number(addOn.price);
+        console.log(`  Converted to number:`, numPrice);
+        if (!isNaN(numPrice)) {
+          baseTotal += numPrice;
+        }
       }
     });
+
+    console.log('Base total before multiplier:', baseTotal);
 
     // Apply condition multiplier - fallback to hardcoded if DB multipliers not loaded
     let multiplier = 1.0;
     if (conditionMultipliers && conditionMultipliers[vehicleCondition]) {
-      multiplier = conditionMultipliers[vehicleCondition];
+      multiplier = Number(conditionMultipliers[vehicleCondition]) || 1.0;
     } else {
       const condition = conditionOptions.find(c => c.value === vehicleCondition);
-      multiplier = condition?.multiplier || 1.0;
+      multiplier = Number(condition?.multiplier) || 1.0;
     }
 
-    return Math.round(baseTotal * multiplier);
+    console.log('Condition multiplier:', multiplier);
+
+    // Final calculation
+    const total = baseTotal * multiplier;
+    console.log('Final total (before rounding):', total);
+    console.log('Is NaN?:', isNaN(total));
+
+    const result = isNaN(total) || !isFinite(total) ? 0 : Math.round(total);
+    console.log('Returned result:', result);
+    console.log('=== END DEBUG ===\n');
+
+    return result;
   };
 
   const handleBooking = async () => {
@@ -411,7 +459,7 @@ export default function QuotePage() {
                 <div className="glass-strong border border-primary/30 rounded-2xl p-8 mb-10 shadow-xl shadow-primary/10">
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div className="text-gray-300 text-lg font-medium">Estimated Total</div>
-                    <div className="text-4xl md:text-5xl font-bold gradient-text-primary">${calculateTotal()}</div>
+                    <div className="text-4xl md:text-5xl font-bold gradient-text-primary">${formatTotal(calculateTotal())}</div>
                   </div>
                 </div>
 
@@ -564,7 +612,7 @@ export default function QuotePage() {
                 <div className="glass-strong border border-primary/30 rounded-2xl p-8 mb-10 shadow-xl shadow-primary/10">
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-3">
                     <div className="text-gray-300 text-lg font-medium">Your Total</div>
-                    <div className="text-4xl md:text-5xl font-bold gradient-text-primary">${calculateTotal()}</div>
+                    <div className="text-4xl md:text-5xl font-bold gradient-text-primary">${formatTotal(calculateTotal())}</div>
                   </div>
                   <div className="text-sm md:text-base text-gray-500 text-center sm:text-right">
                     Including {conditionOptions.find(o => o.value === vehicleCondition)?.label} condition adjustment
