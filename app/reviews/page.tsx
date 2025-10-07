@@ -167,7 +167,7 @@ export default function ReviewsPage() {
               <span className="text-xl text-white/90">({reviews.length} reviews)</span>
             </div>
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light leading-relaxed">
-              See what our customers are saying about Colin's Coastal Car Care
+              Real stories from Southwest Florida drivers living their best coastal life
             </p>
           </div>
         </section>

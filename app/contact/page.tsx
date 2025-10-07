@@ -105,7 +105,7 @@ export default function ContactPage() {
               Contact Us
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light leading-relaxed">
-              Have questions? We're here to help! Reach out to us anytime.
+              Your next beach day awaits - let's chat about keeping your ride pristine in paradise
             </p>
           </div>
         </section>

@@ -139,7 +139,7 @@ export default function ServicesPage() {
               Our Services & Pricing
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light">
-              Professional mobile detailing packages designed to keep your vehicle pristine.
+              Keep your ride shining bright under the Florida sun - from Gulf coast cruises to beachside parking.
               <br className="hidden md:block" />
               All prices shown are starting prices.
             </p>

@@ -167,7 +167,7 @@ export default function QuotePage() {
               Get Your Instant Quote
             </h1>
             <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed">
-              Build your perfect package and book immediately
+              From sunrise drives to sunset cruises - custom pricing for your coastal lifestyle
             </p>
           </div>
         </section>
