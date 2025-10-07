@@ -116,8 +116,8 @@ function ScheduleContent() {
         .insert({
           customer_id: quote.customer_id,
           quote_id: quote.id,
-          booking_date: bookingData.date,
-          booking_time: bookingData.time,
+          scheduled_date: bookingData.date,
+          scheduled_time: bookingData.time,
           location: quote.city,
           services: quote.selected_packages,
           total_price: quote.approved_price,
