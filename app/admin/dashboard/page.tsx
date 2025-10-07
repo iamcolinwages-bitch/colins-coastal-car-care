@@ -21,6 +21,7 @@ import {
   X,
   ChevronRight,
   Activity,
+  ImageIcon,
 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 
@@ -85,6 +86,7 @@ export default function AdminDashboard() {
     { icon: FileText, label: 'Quotes', href: '/admin/quotes', badge: stats.pendingQuotes },
     { icon: Star, label: 'Reviews', href: '/admin/reviews', badge: stats.pendingReviews },
     { icon: Users, label: 'Customers', href: '/admin/customers' },
+    { icon: ImageIcon, label: 'Media', href: '/admin/media' },
     { icon: DollarSign, label: 'Pricing', href: '/admin/pricing' },
     { icon: Mail, label: 'Marketing', href: '/admin/blast' },
     { icon: Settings, label: 'Settings', href: '/admin/settings' },

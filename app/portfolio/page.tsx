@@ -1,11 +1,42 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import { Image as ImageIcon } from 'lucide-react';
+import { createClient } from '@/utils/supabase/client';
+
+interface PortfolioImage {
+  id: string;
+  url: string;
+  alt_text: string;
+  filename: string;
+}
 
 export default function PortfolioPage() {
-  // Placeholder images - will be replaced with actual photos
-  const portfolioItems = Array.from({ length: 12 }, (_, i) => ({ id: i + 1 }));
+  const [portfolioItems, setPortfolioItems] = useState<PortfolioImage[]>([]);
+  const [loading, setLoading] = useState(true);
+  const supabase = createClient();
+
+  useEffect(() => {
+    async function fetchPortfolioImages() {
+      const { data, error } = await supabase
+        .from('media')
+        .select('id, url, alt_text, filename')
+        .eq('category', 'portfolio')
+        .eq('is_active', true)
+        .order('display_order', { ascending: true })
+        .order('uploaded_at', { ascending: false });
+
+      if (error) {
+        console.error('Error fetching portfolio images:', error);
+      } else {
+        setPortfolioItems(data || []);
+      }
+      setLoading(false);
+    }
+
+    fetchPortfolioImages();
+  }, []);
 
   return (
     <>
@@ -29,27 +60,39 @@ export default function PortfolioPage() {
 
         {/* Portfolio Grid */}
         <div className="relative py-20 bg-black">
-
           <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {portfolioItems.map((item) => (
-                <div
-                  key={item.id}
-                  className="group relative overflow-hidden rounded-xl border-2 border-primary/20 hover:border-primary/60 transition-all duration-300 cursor-pointer"
-                >
-                  {/* Image Placeholder */}
-                  <div className="relative aspect-[4/3] bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center overflow-hidden">
-                    {/* Animated gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-red-700/20 to-red-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                    {/* Icon */}
-                    <div className="relative z-10">
-                      <ImageIcon className="w-16 h-16 text-primary/30 group-hover:text-primary/50 transition-colors" />
+            {loading ? (
+              <div className="text-center py-20">
+                <div className="inline-block w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+                <p className="text-gray-400 mt-4">Loading portfolio...</p>
+              </div>
+            ) : portfolioItems.length === 0 ? (
+              <div className="text-center py-20">
+                <ImageIcon className="w-16 h-16 text-gray-600 mx-auto mb-4" />
+                <p className="text-gray-400 text-lg">No portfolio images yet</p>
+                <p className="text-gray-500 text-sm mt-2">Check back soon to see our latest work!</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {portfolioItems.map((item) => (
+                  <div
+                    key={item.id}
+                    className="group relative overflow-hidden rounded-xl border-2 border-primary/20 hover:border-primary/60 transition-all duration-300 cursor-pointer"
+                  >
+                    {/* Image */}
+                    <div className="relative aspect-[4/3] bg-black overflow-hidden">
+                      <img
+                        src={item.url}
+                        alt={item.alt_text || item.filename}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      {/* Overlay on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-red-700/20 to-red-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
