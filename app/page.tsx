@@ -147,7 +147,7 @@ export default function Home() {
 
           {/* Featured Reviews - Below Social Proof */}
           <div className="w-full max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Review 1 */}
             <div className="glass-strong p-6 rounded-2xl border border-white/10 hover:scale-105 transition-all">
               <div className="flex gap-1 mb-3">
@@ -194,6 +194,7 @@ export default function Home() {
                 <div className="text-white font-semibold text-sm">James T.</div>
                 <div className="text-gray-400 text-xs">2023 Porsche 911 - Full Detail</div>
               </div>
+            </div>
             </div>
           </div>
         </div>
