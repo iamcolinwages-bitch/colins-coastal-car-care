@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Navigation from '@/components/Navigation';
-import { Calculator, Check, Sparkles } from 'lucide-react';
+import { Calculator, Check, Sparkles, ChevronDown, ChevronUp } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 
 interface Package {
@@ -40,6 +40,7 @@ export default function QuotePage() {
   const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
   const [vehicleType, setVehicleType] = useState<'sedan' | 'suv_truck'>('sedan');
   const [vehicleCondition, setVehicleCondition] = useState<string>('clean');
+  const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
   const [customerInfo, setCustomerInfo] = useState({
     firstName: '',
     lastName: '',
@@ -212,44 +213,72 @@ export default function QuotePage() {
 
                 <div className="mb-10">
                   <h3 className="text-xl font-bold text-white mb-6">Packages</h3>
-                  <div className="space-y-6">
+                  <div className="space-y-4">
                     {/* Group packages by category */}
                     {['Standard', 'Premium', 'Ultimate'].map((category) => {
                       const categoryPackages = packages.filter(pkg => pkg.name.includes(category));
                       if (categoryPackages.length === 0) return null;
 
+                      const isExpanded = expandedCategories.includes(category);
+                      const isCollapsible = category === 'Standard' || category === 'Premium';
+
                       return (
-                        <div key={category} className="glass rounded-xl p-5 md:p-6">
-                          <div className="text-white font-bold text-lg md:text-xl mb-4">{category} Package</div>
-                          <div className="space-y-3">
-                            {categoryPackages.map((pkg) => (
-                              <label
-                                key={pkg.id}
-                                className="flex items-center gap-4 hover:bg-white/5 rounded-lg p-3 cursor-pointer transition-all"
-                              >
-                                <input
-                                  type="checkbox"
-                                  checked={selectedPackages.includes(pkg.id)}
-                                  onChange={(e) => {
-                                    if (e.target.checked) {
-                                      setSelectedPackages([...selectedPackages, pkg.id]);
-                                    } else {
-                                      setSelectedPackages(selectedPackages.filter((id) => id !== pkg.id));
-                                    }
-                                  }}
-                                  className="w-5 h-5 text-primary rounded flex-shrink-0"
-                                />
-                                <div className="flex-1 min-w-0">
-                                  <div className="text-white font-semibold text-base">
-                                    {pkg.name.replace(`${category} `, '')}
+                        <div key={category} className="glass rounded-xl overflow-hidden">
+                          {/* Header - clickable for Standard & Premium */}
+                          <button
+                            onClick={() => {
+                              if (isCollapsible) {
+                                if (isExpanded) {
+                                  setExpandedCategories(expandedCategories.filter(c => c !== category));
+                                } else {
+                                  setExpandedCategories([...expandedCategories, category]);
+                                }
+                              }
+                            }}
+                            className={`w-full flex items-center justify-between p-5 md:p-6 ${
+                              isCollapsible ? 'hover:bg-white/5 cursor-pointer' : 'cursor-default'
+                            } transition-all`}
+                          >
+                            <div className="text-white font-bold text-lg md:text-xl">{category} Package</div>
+                            {isCollapsible && (
+                              isExpanded ?
+                                <ChevronUp className="w-6 h-6 text-gray-400" /> :
+                                <ChevronDown className="w-6 h-6 text-gray-400" />
+                            )}
+                          </button>
+
+                          {/* Options - always visible for Ultimate, toggleable for Standard/Premium */}
+                          {(!isCollapsible || isExpanded) && (
+                            <div className="px-5 md:px-6 pb-5 md:pb-6 space-y-3 border-t border-white/10">
+                              {categoryPackages.map((pkg) => (
+                                <label
+                                  key={pkg.id}
+                                  className="flex items-center gap-4 hover:bg-white/5 rounded-lg p-3 cursor-pointer transition-all"
+                                >
+                                  <input
+                                    type="checkbox"
+                                    checked={selectedPackages.includes(pkg.id)}
+                                    onChange={(e) => {
+                                      if (e.target.checked) {
+                                        setSelectedPackages([...selectedPackages, pkg.id]);
+                                      } else {
+                                        setSelectedPackages(selectedPackages.filter((id) => id !== pkg.id));
+                                      }
+                                    }}
+                                    className="w-5 h-5 text-primary rounded flex-shrink-0"
+                                  />
+                                  <div className="flex-1 min-w-0">
+                                    <div className="text-white font-semibold text-base">
+                                      {pkg.name.replace(`${category} `, '')}
+                                    </div>
+                                    <div className="text-sm text-gray-400">
+                                      Sedan: ${pkg.sedan_price} | SUV/Truck: ${pkg.suv_truck_price}
+                                    </div>
                                   </div>
-                                  <div className="text-sm text-gray-400">
-                                    Sedan: ${pkg.sedan_price} | SUV/Truck: ${pkg.suv_truck_price}
-                                  </div>
-                                </div>
-                              </label>
-                            ))}
-                          </div>
+                                </label>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       );
                     })}
