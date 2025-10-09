@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { render } from '@react-email/render';
 import { BookingConfirmationEmail } from '@/lib/emails/booking-confirmation';
 import { AdminNotificationEmail } from '@/lib/emails/admin-notification';
 
@@ -51,11 +52,8 @@ export async function POST(request: NextRequest) {
 
     // Send confirmation email to customer
     try {
-      const customerEmailResult = await resend.emails.send({
-        from: 'Colin\'s Coastal Car Care <onboarding@resend.dev>',
-        to: customerEmail,
-        subject: 'Booking Confirmation - Colin\'s Coastal Car Care',
-        react: BookingConfirmationEmail({
+      const customerEmailHtml = await render(
+        BookingConfirmationEmail({
           customerName,
           vehicleInfo,
           scheduledDate: formattedDate,
@@ -64,7 +62,14 @@ export async function POST(request: NextRequest) {
           address,
           city,
           selectedAddons,
-        }),
+        })
+      );
+
+      const customerEmailResult = await resend.emails.send({
+        from: 'Colin\'s Coastal Car Care <onboarding@resend.dev>',
+        to: customerEmail,
+        subject: 'Booking Confirmation - Colin\'s Coastal Car Care',
+        html: customerEmailHtml,
       });
       emails.push({ type: 'customer', result: customerEmailResult });
     } catch (error) {
@@ -75,11 +80,8 @@ export async function POST(request: NextRequest) {
     // Send notification email to admin
     const adminEmail = process.env.ADMIN_EMAIL || 'colin@colinscoastalcarcare.com';
     try {
-      const adminEmailResult = await resend.emails.send({
-        from: 'Colin\'s Coastal Car Care <onboarding@resend.dev>',
-        to: adminEmail,
-        subject: `New Booking: ${customerName} - ${formattedDate}`,
-        react: AdminNotificationEmail({
+      const adminEmailHtml = await render(
+        AdminNotificationEmail({
           customerName,
           customerEmail,
           customerPhone,
@@ -92,7 +94,14 @@ export async function POST(request: NextRequest) {
           selectedAddons,
           notes,
           bookingId,
-        }),
+        })
+      );
+
+      const adminEmailResult = await resend.emails.send({
+        from: 'Colin\'s Coastal Car Care <onboarding@resend.dev>',
+        to: adminEmail,
+        subject: `New Booking: ${customerName} - ${formattedDate}`,
+        html: adminEmailHtml,
       });
       emails.push({ type: 'admin', result: adminEmailResult });
     } catch (error) {
