@@ -4,6 +4,9 @@ import { render } from '@react-email/render';
 import { BookingConfirmationEmail } from '@/lib/emails/booking-confirmation';
 import { AdminNotificationEmail } from '@/lib/emails/admin-notification';
 
+// Mark this route as dynamic to prevent build-time execution
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   try {
     // Initialize Resend with API key
