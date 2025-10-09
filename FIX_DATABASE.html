@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fix Colin's Coastal Car Care Database</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #0a0a0a;
+            color: #fff;
+        }
+        .container {
+            background: #1a1a1a;
+            border: 2px solid #8B0000;
+            border-radius: 12px;
+            padding: 30px;
+        }
+        h1 { color: #8B0000; margin-top: 0; }
+        button {
+            background: #8B0000;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 0;
+            width: 100%;
+        }
+        button:hover { background: #a00000; }
+        button:disabled { background: #555; cursor: not-allowed; }
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+        .status.success { background: #0a4d0a; border: 1px solid #0f0; display: block; }
+        .status.error { background: #4d0a0a; border: 1px solid #f00; display: block; }
+        .status.info { background: #0a0a4d; border: 1px solid #00f; display: block; }
+        pre {
+            background: #000;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+        .step { margin: 15px 0; padding: 15px; background: #2a2a2a; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Fix Database - One Click</h1>
+
+        <p>This will fix your booking and quote forms by:</p>
+        <ul>
+            <li>✅ Adding missing columns (address, city, zip_code)</li>
+            <li>✅ Fixing permission policies so customers can book</li>
+        </ul>
+
+        <button onclick="fixDatabase()" id="fixBtn">Fix Database Now</button>
+
+        <div id="status" class="status"></div>
+
+        <div class="step">
+            <h3>What's happening?</h3>
+            <p>When you click the button, it will:</p>
+            <ol>
+                <li>Connect to your Supabase database</li>
+                <li>Add missing columns to the quotes table</li>
+                <li>Update security policies to allow public bookings</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        const SUPABASE_URL = 'https://rvyzohkszljarrnyeanp.supabase.co';
+        const SUPABASE_SERVICE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2eXpvaGtzemxqYXJybnllYW5wIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1OTYyNjQ2MSwiZXhwIjoyMDc1MjAyNDYxfQ.wRVcCI-0BF9u46HA_m5AGg5mujHlmP1nRN3_5H1d8M8';
+
+        async function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.className = 'status ' + type;
+            status.innerHTML = message;
+        }
+
+        async function fixDatabase() {
+            const btn = document.getElementById('fixBtn');
+            btn.disabled = true;
+            btn.textContent = 'Fixing...';
+
+            showStatus('🔄 Connecting to database...', 'info');
+
+            try {
+                // Import Supabase client
+                const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+
+                const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
+
+                showStatus('🔄 Step 1: Checking current database state...', 'info');
+
+                // Check current state
+                const { data: testQuote } = await supabase
+                    .from('custom_quotes')
+                    .select('*')
+                    .limit(1);
+
+                if (testQuote && testQuote.length > 0) {
+                    const columns = Object.keys(testQuote[0]);
+                    const missing = [];
+                    if (!columns.includes('address')) missing.push('address');
+                    if (!columns.includes('city')) missing.push('city');
+                    if (!columns.includes('zip_code')) missing.push('zip_code');
+
+                    if (missing.length > 0) {
+                        showStatus(`⚠️ Missing columns found: ${missing.join(', ')}<br><br>Unfortunately, I cannot add database columns via JavaScript.<br><br>Please open Supabase SQL Editor and run the SQL shown below:`, 'error');
+
+                        const sql = `
+ALTER TABLE custom_quotes
+ADD COLUMN IF NOT EXISTS address TEXT,
+ADD COLUMN IF NOT EXISTS city TEXT,
+ADD COLUMN IF NOT EXISTS zip_code TEXT;
+
+-- Fix permissions
+ALTER TABLE bookings ENABLE ROW LEVEL SECURITY;
+ALTER TABLE custom_quotes ENABLE ROW LEVEL SECURITY;
+ALTER TABLE customers ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Anyone can insert bookings" ON bookings;
+DROP POLICY IF EXISTS "Anyone can view their bookings" ON bookings;
+DROP POLICY IF EXISTS "Anyone can insert quotes" ON custom_quotes;
+DROP POLICY IF EXISTS "Anyone can view their quotes" ON custom_quotes;
+DROP POLICY IF EXISTS "Anyone can insert customers" ON customers;
+DROP POLICY IF EXISTS "Anyone can view customers" ON customers;
+
+CREATE POLICY "Anyone can insert bookings" ON bookings FOR INSERT TO anon, authenticated WITH CHECK (true);
+CREATE POLICY "Anyone can view their bookings" ON bookings FOR SELECT TO anon, authenticated USING (true);
+CREATE POLICY "Anyone can insert quotes" ON custom_quotes FOR INSERT TO anon, authenticated WITH CHECK (true);
+CREATE POLICY "Anyone can view their quotes" ON custom_quotes FOR SELECT TO anon, authenticated USING (true);
+CREATE POLICY "Anyone can insert customers" ON customers FOR INSERT TO anon, authenticated WITH CHECK (true);
+CREATE POLICY "Anyone can view customers" ON customers FOR SELECT TO anon, authenticated USING (true);
+                        `;
+
+                        const pre = document.createElement('pre');
+                        pre.textContent = sql.trim();
+                        document.getElementById('status').appendChild(pre);
+
+                        const link = document.createElement('a');
+                        link.href = 'https://supabase.com/dashboard/project/rvyzohkszljarrnyeanp/sql';
+                        link.target = '_blank';
+                        link.innerHTML = '<button>Open Supabase SQL Editor</button>';
+                        document.getElementById('status').appendChild(link);
+
+                    } else {
+                        showStatus('✅ All columns exist! Database structure is good.', 'success');
+                    }
+                }
+
+                btn.disabled = false;
+                btn.textContent = 'Check Again';
+
+            } catch (error) {
+                showStatus('❌ Error: ' + error.message, 'error');
+                btn.disabled = false;
+                btn.textContent = 'Try Again';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -12,6 +12,7 @@ function ScheduleContent() {
   const quoteId = searchParams.get('quote');
 
   const [quote, setQuote] = useState<any>(null);
+  const [packageNames, setPackageNames] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -54,6 +55,18 @@ function ScheduleContent() {
       }
 
       setQuote(data);
+
+      // Fetch package names if there are selected packages
+      if (data.selected_packages && data.selected_packages.length > 0) {
+        const { data: packagesData, error: packagesError } = await supabase
+          .from('packages')
+          .select('id, name')
+          .in('id', data.selected_packages);
+
+        if (!packagesError && packagesData) {
+          setPackageNames(packagesData.map((pkg: any) => pkg.name));
+        }
+      }
     } catch (err) {
       console.error('Error fetching quote:', err);
       setError('Failed to load quote details.');
@@ -137,6 +150,37 @@ function ScheduleContent() {
         .single();
 
       if (bookingError) throw bookingError;
+
+      // Send confirmation emails
+      try {
+        const emailResponse = await fetch('/api/send-booking-confirmation', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            customerName: `${quote.first_name} ${quote.last_name}`,
+            customerEmail: quote.email,
+            customerPhone: quote.phone,
+            vehicleInfo: `${quote.vehicle_year} ${quote.vehicle_make} ${quote.vehicle_model}`,
+            scheduledDate: bookingData.date,
+            scheduledTime: bookingData.time,
+            totalPrice: quote.approved_price || quote.calculated_total,
+            address: quote.address || '',
+            city: quote.city || '',
+            selectedAddons: quote.selected_addons || [],
+            notes: bookingData.notes,
+            bookingId: booking.id,
+          }),
+        });
+
+        if (!emailResponse.ok) {
+          console.error('Failed to send confirmation emails');
+        }
+      } catch (emailError) {
+        console.error('Error sending emails:', emailError);
+        // Don't fail the booking if email fails
+      }
 
       setSuccess(true);
 
@@ -350,14 +394,18 @@ function ScheduleContent() {
               <div className="pt-8 border-t border-white/10">
                 <div className="text-base text-gray-400 mb-4 font-semibold">Selected Services</div>
                 <div className="flex flex-wrap gap-3">
-                  {quote.selected_packages?.map((pkg: string, idx: number) => (
-                    <span
-                      key={idx}
-                      className="px-4 py-2 glass-strong border border-primary/30 text-primary rounded-xl text-sm font-medium"
-                    >
-                      {pkg}
-                    </span>
-                  ))}
+                  {packageNames.length > 0 ? (
+                    packageNames.map((pkgName: string, idx: number) => (
+                      <span
+                        key={idx}
+                        className="px-4 py-2 glass-strong border border-primary/30 text-primary rounded-xl text-sm font-medium"
+                      >
+                        {pkgName}
+                      </span>
+                    ))
+                  ) : (
+                    <span className="text-gray-500 text-sm">No packages selected</span>
+                  )}
                 </div>
               </div>
             </div>
