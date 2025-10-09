@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
 
     // Send confirmation email to customer
     try {
-      const customerEmailHtml = render(
+      const customerEmailHtml = await render(
         <BookingConfirmationEmail
           customerName={customerName}
           vehicleInfo={vehicleInfo}
@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
     // Send notification email to admin
     const adminEmail = process.env.ADMIN_EMAIL || 'colin@colinscoastalcarcare.com';
     try {
-      const adminEmailHtml = render(
+      const adminEmailHtml = await render(
         <AdminNotificationEmail
           customerName={customerName}
           customerEmail={customerEmail}
