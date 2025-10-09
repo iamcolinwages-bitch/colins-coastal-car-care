@@ -52,17 +52,17 @@ export async function POST(request: NextRequest) {
 
     // Send confirmation email to customer
     try {
-      const customerEmailHtml = await render(
-        BookingConfirmationEmail({
-          customerName,
-          vehicleInfo,
-          scheduledDate: formattedDate,
-          scheduledTime: formattedTime,
-          totalPrice,
-          address,
-          city,
-          selectedAddons,
-        })
+      const customerEmailHtml = render(
+        <BookingConfirmationEmail
+          customerName={customerName}
+          vehicleInfo={vehicleInfo}
+          scheduledDate={formattedDate}
+          scheduledTime={formattedTime}
+          totalPrice={totalPrice}
+          address={address}
+          city={city}
+          selectedAddons={selectedAddons}
+        />
       );
 
       const customerEmailResult = await resend.emails.send({
@@ -80,21 +80,21 @@ export async function POST(request: NextRequest) {
     // Send notification email to admin
     const adminEmail = process.env.ADMIN_EMAIL || 'colin@colinscoastalcarcare.com';
     try {
-      const adminEmailHtml = await render(
-        AdminNotificationEmail({
-          customerName,
-          customerEmail,
-          customerPhone,
-          vehicleInfo,
-          scheduledDate: formattedDate,
-          scheduledTime: formattedTime,
-          totalPrice,
-          address,
-          city,
-          selectedAddons,
-          notes,
-          bookingId,
-        })
+      const adminEmailHtml = render(
+        <AdminNotificationEmail
+          customerName={customerName}
+          customerEmail={customerEmail}
+          customerPhone={customerPhone}
+          vehicleInfo={vehicleInfo}
+          scheduledDate={formattedDate}
+          scheduledTime={formattedTime}
+          totalPrice={totalPrice}
+          address={address}
+          city={city}
+          selectedAddons={selectedAddons}
+          notes={notes}
+          bookingId={bookingId}
+        />
       );
 
       const adminEmailResult = await resend.emails.send({
