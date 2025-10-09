@@ -102,12 +102,6 @@ function ScheduleContent() {
     if (!bookingData.time) {
       newErrors.time = 'Please select a time';
       isValid = false;
-    } else {
-      const [hours] = bookingData.time.split(':').map(Number);
-      if (hours < 7 || hours >= 19) {
-        newErrors.time = 'Please select a time between 7:00 AM and 7:00 PM';
-        isValid = false;
-      }
     }
 
     setErrors(newErrors);
@@ -196,24 +190,15 @@ function ScheduleContent() {
     }
   };
 
-  // Generate time slots
-  const generateTimeSlots = () => {
-    const slots = [];
-    for (let hour = 7; hour < 19; hour++) {
-      const time = `${hour.toString().padStart(2, '0')}:00`;
-      const displayTime = `${hour > 12 ? hour - 12 : hour}:00 ${hour >= 12 ? 'PM' : 'AM'}`;
-      slots.push({ value: time, label: displayTime });
-
-      if (hour < 18) {
-        const halfTime = `${hour.toString().padStart(2, '0')}:30`;
-        const halfDisplayTime = `${hour > 12 ? hour - 12 : hour}:30 ${hour >= 12 ? 'PM' : 'AM'}`;
-        slots.push({ value: halfTime, label: halfDisplayTime });
-      }
-    }
-    return slots;
-  };
-
-  const timeSlots = generateTimeSlots();
+  // Available time slots (limited to 2 details per day)
+  const timeSlots = [
+    { value: '07:00', label: '7:00 AM' },
+    { value: '08:00', label: '8:00 AM' },
+    { value: '09:00', label: '9:00 AM' },
+    { value: '11:00', label: '11:00 AM' },
+    { value: '12:00', label: '12:00 PM' },
+    { value: '13:00', label: '1:00 PM' },
+  ];
 
   // Get minimum date (tomorrow)
   const tomorrow = new Date();
@@ -481,7 +466,7 @@ function ScheduleContent() {
                     </p>
                   )}
                   <p className="text-sm text-gray-400 mt-3">
-                    Mon-Sat: 7:00 AM - 7:00 PM
+                    Available slots: 7-9 AM, 11 AM-1 PM (Closed Sundays)
                   </p>
                 </div>
               </div>
