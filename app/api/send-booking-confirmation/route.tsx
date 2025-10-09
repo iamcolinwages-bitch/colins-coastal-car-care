@@ -4,10 +4,11 @@ import { render } from '@react-email/render';
 import { BookingConfirmationEmail } from '@/lib/emails/booking-confirmation';
 import { AdminNotificationEmail } from '@/lib/emails/admin-notification';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: NextRequest) {
   try {
+    // Initialize Resend with API key
+    const resend = new Resend(process.env.RESEND_API_KEY || '');
+
     const body = await request.json();
 
     const {
